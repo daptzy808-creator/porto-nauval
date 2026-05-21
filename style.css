@@ -1,0 +1,2772 @@
+﻿/* ============================================================
+   NDR Personal Site — style.css
+   Theme: Black & Gold | Font: Playfair Display + DM Sans
+   ============================================================ */
+
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap");
+
+/* ── VARIABLES ─────────────────────────────────────────── */
+:root {
+  --bg:          #0c0c0c;
+  --bg2:         #111111;
+  --bg3:         #161616;
+  --card:        #141414;
+  --gold:        #c9a84c;
+  --gold-lt:     #e8c97a;
+  --gold-dk:     #9a7a2e;
+  --gold-grad:   linear-gradient(135deg, #9a7a2e, #c9a84c, #e8c97a, #c9a84c);
+  --gold-grad2:  linear-gradient(90deg, #c9a84c, #e8c97a);
+  --white:       #f5f0e8;
+  --muted:       #7a7060;
+  --border:      rgba(201,168,76,0.18);
+  --border-lt:   rgba(201,168,76,0.35);
+  --shadow-gold: 0 4px 30px rgba(201,168,76,0.12);
+  --font-head:   "Playfair Display", Georgia, serif;
+  --font-body:   "DM Sans", system-ui, sans-serif;
+  --r-sm:        6px;
+  --r-md:        12px;
+  --r-lg:        20px;
+  --tr:          all 0.3s ease;
+}
+
+/* ── RESET ──────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--white);
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+img { max-width: 100%; display: block; }
+em { font-style: italic; }
+
+/* ── PARTICLES ──────────────────────────────────────────── */
+#particles-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ── NAVBAR ─────────────────────────────────────────────── */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 900;
+  padding: 1.2rem 0;
+  transition: var(--tr);
+}
+.navbar.scrolled {
+  background: rgba(10,10,10,0.95);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  padding: 0.7rem 0;
+}
+.nav-container {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo {
+  font-family: var(--font-head);
+  font-size: 1.6rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+  color: var(--white);
+}
+.logo-dot { color: var(--gold); }
+.nav-links {
+  display: flex;
+  gap: 2.2rem;
+}
+.nav-link {
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: var(--muted);
+  position: relative;
+  transition: var(--tr);
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -3px; left: 0;
+  width: 0; height: 1px;
+  background: var(--gold-grad2);
+  transition: width 0.3s ease;
+}
+.nav-link:hover, .nav-link.active { color: var(--gold-lt); }
+.nav-link:hover::after, .nav-link.active::after { width: 100%; }
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 901;
+}
+.hamburger span {
+  display: block;
+  width: 22px; height: 2px;
+  background: var(--white);
+  border-radius: 2px;
+  transition: var(--tr);
+}
+.hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── SECTION SHARED ─────────────────────────────────────── */
+.about, .skills, .portfolio, .cv-section, .contact {
+  position: relative;
+  z-index: 1;
+  padding: 6rem 0;
+}
+.about   { background: var(--bg2); }
+.skills  { background: var(--bg); }
+.portfolio { background: var(--bg2); }
+.cv-section { background: var(--bg); }
+.contact { background: var(--bg2); }
+
+.section-wrap {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.section-head {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+.sec-label {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.6rem;
+}
+.sec-title {
+  font-family: var(--font-head);
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+.sec-title em {
+  color: var(--gold);
+  font-style: italic;
+}
+.gold-line {
+  width: 48px;
+  height: 2px;
+  background: var(--gold-grad2);
+  margin: 0 auto;
+  border-radius: 2px;
+  position: relative;
+}
+.gold-line::before, .gold-line::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+.gold-line::before { left: -10px; }
+.gold-line::after  { right: -10px; }
+
+/* ── BUTTONS ─────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.8rem;
+  border-radius: var(--r-sm);
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: var(--tr);
+  letter-spacing: 0.3px;
+}
+.btn-gold {
+  background: var(--gold-grad);
+  color: #0c0c0c;
+  box-shadow: 0 2px 16px rgba(201,168,76,0.25);
+}
+.btn-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(201,168,76,0.4);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+}
+.btn-outline:hover {
+  background: rgba(201,168,76,0.08);
+  transform: translateY(-2px);
+}
+.btn-full { width: 100%; justify-content: center; }
+
+/* ── HERO ────────────────────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  padding: 7rem 2rem 4rem;
+  overflow: hidden;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(201,168,76,0.05) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 50%, rgba(201,168,76,0.04) 0%, transparent 55%);
+  pointer-events: none;
+}
+.hero-wrap {
+  max-width: 1100px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+}
+
+/* Avatar */
+.hero-visual {
+  flex-shrink: 0;
+  width: 320px; height: 320px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.avatar-container {
+  position: relative;
+  width: 100%; height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.avatar-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid transparent;
+}
+.ring-1 {
+  width: 260px; height: 260px;
+  border-color: rgba(201,168,76,0.25);
+  animation: spin 10s linear infinite;
+}
+.ring-2 {
+  width: 300px; height: 300px;
+  border-color: rgba(201,168,76,0.12);
+  animation: spin 16s linear infinite reverse;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.avatar-frame {
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: var(--gold-grad);
+  padding: 3px;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 0 40px rgba(201,168,76,0.2);
+}
+.avatar-placeholder {
+  width: 100%; height: 100%;
+  border-radius: 50%;
+  background: var(--bg3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 1px;
+}
+.avatar-placeholder i {
+  font-size: 2.8rem;
+  background: var(--gold-grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+/* Foto asli di hero avatar */
+.avatar-photo {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+.floating-badge {
+  position: absolute;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: 0.45rem 0.85rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--white);
+  white-space: nowrap;
+  z-index: 3;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+.floating-badge i { color: var(--gold); margin-right: 4px; }
+.badge-design { top: 8%;  right: -8%; animation: floatY 4s ease-in-out infinite; }
+.badge-game   { bottom: 18%; left: -12%; animation: floatY 5s ease-in-out infinite 1s; }
+.badge-code   { bottom: 4%; right: -4%; animation: floatY 4.5s ease-in-out infinite 0.5s; }
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+/* Hero text */
+.hero-text {
+  flex: 1;
+  min-width: 280px;
+  max-width: 500px;
+}
+.hero-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 0.3rem 0.9rem;
+  margin-bottom: 1.4rem;
+  background: rgba(201,168,76,0.04);
+}
+.pulse-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #4ade80;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(74,222,128,0.4); }
+  50%       { box-shadow: 0 0 0 5px rgba(74,222,128,0); }
+}
+.hero-title { margin-bottom: 1rem; }
+.hero-hi {
+  display: block;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--muted);
+  margin-bottom: 0.2rem;
+  font-family: var(--font-body);
+}
+.hero-name {
+  display: block;
+  font-family: var(--font-head);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 900;
+  line-height: 1.15;
+  background: var(--gold-grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-tagline {
+  font-size: 1.1rem;
+  color: var(--muted);
+  margin-bottom: 1rem;
+  min-height: 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.typewriter { color: var(--gold-lt); font-weight: 500; }
+.cursor {
+  display: inline-block;
+  width: 2px; height: 1.1em;
+  background: var(--gold);
+  vertical-align: middle;
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+.hero-desc {
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+.hero-cta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.scroll-hint {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--muted);
+  font-size: 1.1rem;
+  animation: bounce 2s ease-in-out infinite;
+  z-index: 2;
+}
+@keyframes bounce {
+  0%,100% { transform: translateX(-50%) translateY(0); }
+  50%      { transform: translateX(-50%) translateY(7px); }
+}
+/* ── SCROLL REVEAL ──────────────────────────────────────── */
+[data-aos] { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+[data-aos].aos-animate { opacity: 1; transform: none; }
+
+/* ── ABOUT ───────────────────────────────────────────────── */
+.about-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+.about-left { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; }
+.about-avatar-wrap {
+  position: relative;
+  width: 200px; height: 200px;
+  border-radius: var(--r-md);
+  background: var(--bg3);
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+/* Foto asli di about */
+.about-avatar-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: var(--r-md);
+  display: block;
+}
+.corner {
+  position: absolute;
+  width: 16px; height: 16px;
+  border-color: var(--gold);
+  border-style: solid;
+}
+.corner.tl { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+.corner.tr { top: -1px; right: -1px; border-width: 2px 2px 0 0; }
+.corner.bl { bottom: -1px; left: -1px; border-width: 0 0 2px 2px; }
+.corner.br { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
+.about-avatar-inner {
+  display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+  color: var(--muted); font-size: 0.75rem; font-weight: 600; letter-spacing: 1px;
+}
+.about-avatar-inner i {
+  font-size: 3.5rem;
+  background: var(--gold-grad);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.about-name-plate {
+  text-align: center;
+  padding: 0.75rem 1.25rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  width: 100%;
+}
+.about-name-plate strong { display: block; font-size: 0.9rem; font-weight: 600; color: var(--white); margin-bottom: 0.2rem; }
+.about-name-plate span { font-size: 0.78rem; color: var(--gold); }
+.about-right { display: flex; flex-direction: column; gap: 1.5rem; }
+.about-block {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 1.25rem 1.5rem;
+  transition: var(--tr);
+}
+.about-block:hover { border-color: rgba(201,168,76,0.35); }
+.about-block.half { flex: 1; }
+.about-block-head {
+  display: flex; align-items: center; gap: 0.6rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--border);
+}
+.about-block-head i { color: var(--gold); font-size: 0.95rem; width: 18px; }
+.about-block-head h3 { font-size: 0.88rem; font-weight: 600; letter-spacing: 0.3px; }
+.about-block p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+.about-block p strong { color: var(--gold-lt); font-weight: 600; }
+.about-note { font-size: 0.82rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+.about-row-2 { display: flex; gap: 1.5rem; }
+.family-row { display: flex; gap: 0.75rem; }
+.family-card {
+  flex: 1; display: flex; align-items: center; gap: 0.6rem;
+  background: rgba(201,168,76,0.05); border: 1px solid var(--border);
+  border-radius: var(--r-sm); padding: 0.6rem 0.85rem;
+}
+.family-card > i { font-size: 1.4rem; color: var(--gold); }
+.family-card strong { display: block; font-size: 0.85rem; font-weight: 600; }
+.family-card span { font-size: 0.75rem; color: var(--muted); }
+.edu-timeline { display: flex; flex-direction: column; gap: 0; position: relative; padding-left: 1.25rem; }
+.edu-timeline::before {
+  content: ""; position: absolute; left: 5px; top: 6px; bottom: 6px;
+  width: 1px; background: linear-gradient(to bottom, var(--gold), transparent); opacity: 0.4;
+}
+.edu-item { position: relative; padding: 0 0 1rem 1rem; }
+.edu-item:last-child { padding-bottom: 0; }
+.edu-dot {
+  position: absolute; left: -1.25rem; top: 4px;
+  width: 11px; height: 11px; border-radius: 50%;
+  background: var(--bg3); border: 2px solid var(--gold);
+}
+.edu-item.active .edu-dot { background: var(--gold); box-shadow: 0 0 8px rgba(201,168,76,0.5); }
+.edu-info strong { display: block; font-size: 0.88rem; font-weight: 600; color: var(--white); }
+.edu-info span { font-size: 0.78rem; color: var(--muted); display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; }
+.badge-now {
+  display: inline-block; padding: 0.1rem 0.5rem;
+  background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3);
+  border-radius: 100px; font-size: 0.68rem; font-weight: 600; color: var(--gold);
+}
+.hobby-list { display: flex; flex-direction: column; gap: 0.4rem; }
+.hobby-list span { font-size: 0.85rem; color: var(--muted); display: flex; align-items: center; gap: 0.5rem; }
+.hobby-list span i { color: var(--gold); width: 14px; }
+.skill-badges { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.sbadge {
+  padding: 0.25rem 0.7rem; border-radius: 100px;
+  font-size: 0.75rem; font-weight: 600;
+}
+.sbadge.soft { background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.25); color: var(--gold); }
+.sbadge.hard { background: rgba(201,168,76,0.06); border: 1px solid rgba(201,168,76,0.18); color: var(--gold-lt); }
+
+/* ── SKILLS ──────────────────────────────────────────────── */
+.skills-layout { display: flex; gap: 3rem; align-items: flex-start; }
+.skills-bars { flex: 1; display: flex; flex-direction: column; gap: 1.5rem; }
+.skill-item { display: flex; flex-direction: column; gap: 0.5rem; }
+.skill-top { display: flex; align-items: center; justify-content: space-between; }
+.skill-label { display: flex; align-items: center; gap: 0.5rem; font-size: 0.88rem; font-weight: 500; }
+.skill-label i { color: var(--gold); font-size: 1rem; width: 18px; }
+.skill-percent { font-size: 0.82rem; font-weight: 700; color: var(--gold); }
+.skill-bar {
+  width: 100%; height: 6px;
+  background: rgba(255,255,255,0.06); border-radius: 100px; overflow: hidden;
+}
+.skill-fill {
+  height: 100%; width: 0%;
+  background: var(--gold-grad2);
+  border-radius: 100px;
+  transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+  position: relative;
+}
+.skill-fill::after {
+  content: ""; position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--gold-lt); box-shadow: 0 0 6px var(--gold);
+}
+.skills-chart-wrap { flex: 1; max-width: 420px; }
+.chart-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--r-md); padding: 1.5rem;
+}
+.chart-card-head {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-size: 0.85rem; font-weight: 600; color: var(--gold);
+  margin-bottom: 1.25rem;
+}
+#skillsChart { width: 100%; border-radius: var(--r-sm); }
+
+/* ── PORTFOLIO ───────────────────────────────────────────── */
+.portfolio-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+.pcard {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--r-md); overflow: hidden; transition: var(--tr);
+}
+.pcard:hover { border-color: rgba(201,168,76,0.4); transform: translateY(-5px); box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 20px rgba(201,168,76,0.08); }
+.pcard-img { position: relative; height: 200px; overflow: hidden; }
+.pcard-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+.pcard:hover .pcard-img img { transform: scale(1.05); }
+.pcard-placeholder {
+  width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(201,168,76,0.03));
+}
+.pcard-placeholder.design { background: linear-gradient(135deg, rgba(168,85,247,0.1), rgba(201,168,76,0.05)); }
+.pcard-placeholder.network { background: linear-gradient(135deg, rgba(0,188,235,0.1), rgba(201,168,76,0.05)); }
+.pcard-placeholder i { font-size: 2.5rem; color: var(--gold); opacity: 0.6; }
+.pcard-overlay {
+  position: absolute; inset: 0;
+  background: rgba(12,12,12,0.82);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transition: opacity 0.3s ease;
+  backdrop-filter: blur(3px);
+}
+.pcard:hover .pcard-overlay { opacity: 1; }
+.btn-see {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.55rem 1.3rem; border-radius: var(--r-sm);
+  background: var(--gold-grad); color: #0c0c0c;
+  font-size: 0.82rem; font-weight: 700; transition: var(--tr);
+}
+.btn-see:hover { transform: scale(1.05); }
+.pcard-body { padding: 1.25rem; }
+.ptag {
+  display: inline-block; padding: 0.18rem 0.65rem;
+  background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 100px; font-size: 0.7rem; font-weight: 600;
+  color: var(--gold); margin-bottom: 0.6rem;
+}
+.pcard-body h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; font-family: var(--font-head); }
+.pcard-body p { font-size: 0.83rem; color: var(--muted); line-height: 1.65; margin-bottom: 0.85rem; }
+.plink {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  font-size: 0.8rem; font-weight: 600; color: var(--gold);
+  transition: var(--tr);
+}
+.plink:hover { color: var(--gold-lt); gap: 0.55rem; }
+
+/* ── CV ──────────────────────────────────────────────────── */
+.cv-wrap { display: grid; grid-template-columns: 280px 1fr; gap: 2rem; align-items: start; }
+.cv-left { display: flex; flex-direction: column; gap: 1.25rem; }
+.cv-profile {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--r-md); padding: 1.75rem 1.5rem; text-align: center;
+}
+.cv-photo-wrap { position: relative; width: 120px; height: 120px; margin: 0 auto 1.25rem; }
+.cv-photo { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; object-position: top; position: relative; z-index: 2; }
+.cv-photo-ph {
+  width: 120px; height: 120px; border-radius: 50%;
+  background: var(--bg3); border: 2px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2.5rem; color: var(--muted); position: relative; z-index: 2;
+}
+.cv-photo-ring {
+  position: absolute; inset: -5px; border-radius: 50%;
+  background: var(--gold-grad); z-index: 1; opacity: 0.5;
+  animation: ringPulse 3s ease-in-out infinite;
+}
+@keyframes ringPulse { 0%,100%{opacity:0.3;transform:scale(1)} 50%{opacity:0.6;transform:scale(1.03)} }
+.cv-name { font-family: var(--font-head); font-size: 1.1rem; font-weight: 700; margin-bottom: 0.25rem; }
+.cv-role { font-size: 0.78rem; color: var(--gold); font-weight: 600; margin-bottom: 1.1rem; }
+.cv-contacts { display: flex; flex-direction: column; gap: 0.5rem; text-align: left; }
+.cv-crow { display: flex; align-items: center; gap: 0.55rem; font-size: 0.78rem; color: var(--muted); }
+.cv-crow i { color: var(--gold); width: 14px; font-size: 0.8rem; }
+.cv-block {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--r-md); padding: 1.25rem 1.5rem;
+}
+.cv-block-head {
+  display: flex; align-items: center; gap: 0.55rem;
+  margin-bottom: 1.1rem; padding-bottom: 0.65rem;
+  border-bottom: 1px solid var(--border);
+}
+.cv-block-head i { color: var(--gold); font-size: 0.9rem; }
+.cv-block-head h3 { font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+.cv-skills { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1rem; }
+.cv-skill-row { display: flex; align-items: center; gap: 0.5rem; font-size: 0.78rem; }
+.cv-skill-row > span:first-child { width: 68px; flex-shrink: 0; color: var(--muted); font-weight: 500; }
+.cv-bar { flex: 1; height: 4px; background: rgba(255,255,255,0.06); border-radius: 100px; overflow: hidden; }
+.cv-fill { height: 100%; background: var(--gold-grad2); border-radius: 100px; }
+.cv-pct { font-size: 0.72rem; font-weight: 700; color: var(--gold); width: 30px; text-align: right; }
+.cv-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.cv-tags span {
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  padding: 0.2rem 0.6rem; border-radius: 100px;
+  background: rgba(201,168,76,0.07); border: 1px solid rgba(201,168,76,0.18);
+  font-size: 0.72rem; font-weight: 500; color: var(--gold);
+}
+.cv-hobbies { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+.cv-hobby { display: flex; align-items: center; gap: 0.45rem; font-size: 0.8rem; color: var(--muted); }
+.cv-hobby i { color: var(--gold); font-size: 0.85rem; width: 14px; }
+.cv-right { display: flex; flex-direction: column; gap: 1.25rem; }
+.cv-data { display: flex; flex-direction: column; gap: 0; }
+.cv-data-row {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 0.55rem 0; border-bottom: 1px solid rgba(201,168,76,0.07);
+  gap: 1rem;
+}
+.cv-data-row:last-child { border-bottom: none; }
+.cv-data-row span { font-size: 0.75rem; color: var(--muted); flex-shrink: 0; }
+.cv-data-row strong { font-size: 0.85rem; font-weight: 600; text-align: right; }
+.cv-timeline { display: flex; flex-direction: column; position: relative; padding-left: 1.5rem; }
+.cv-timeline::before {
+  content: ""; position: absolute; left: 6px; top: 8px; bottom: 8px;
+  width: 1px; background: linear-gradient(to bottom, var(--gold), transparent); opacity: 0.3;
+}
+.cv-tl-item { position: relative; padding: 0 0 1.25rem 1rem; }
+.cv-tl-item:last-child { padding-bottom: 0; }
+.cv-tl-dot {
+  position: absolute; left: -1.5rem; top: 4px;
+  width: 13px; height: 13px; border-radius: 50%;
+  background: var(--bg3); border: 2px solid var(--border);
+}
+.cv-tl-dot.gold { border-color: var(--gold); background: rgba(201,168,76,0.15); }
+.cv-tl-item.active .cv-tl-dot { background: var(--gold); border-color: var(--gold); box-shadow: 0 0 10px rgba(201,168,76,0.5); }
+.cv-tl-body h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.2rem; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+.cv-now {
+  font-size: 0.68rem; font-weight: 600; color: var(--gold);
+  background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.25);
+  padding: 0.1rem 0.5rem; border-radius: 100px;
+}
+.cv-tl-tag { display: inline-block; font-size: 0.72rem; color: var(--gold); font-weight: 600; margin-bottom: 0.3rem; }
+.cv-tl-body p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+.cv-quote {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--r-md); padding: 1.75rem;
+  text-align: center; position: relative; overflow: hidden;
+}
+.cv-quote::before {
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, rgba(201,168,76,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cv-quote i { font-size: 1.8rem; color: var(--gold); opacity: 0.6; margin-bottom: 0.75rem; display: block; }
+.cv-quote blockquote { font-family: var(--font-head); font-style: italic; font-size: 0.95rem; line-height: 1.8; color: var(--white); margin-bottom: 0.75rem; }
+.cv-quote p { font-size: 0.8rem; font-weight: 600; color: var(--gold); }
+.cv-dl { text-align: center; margin-top: 2.5rem; }
+
+/* ── CONTACT ─────────────────────────────────────────────── */
+.contact-layout { display: flex; gap: 3rem; align-items: flex-start; }
+.contact-info { flex: 1; }
+.cinfo-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--r-md); padding: 2rem;
+}
+.cinfo-card h3 { font-family: var(--font-head); font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; }
+.cinfo-card > p { font-size: 0.88rem; color: var(--muted); margin-bottom: 1.5rem; line-height: 1.7; }
+.cinfo-items { display: flex; flex-direction: column; gap: 0.85rem; }
+.cinfo-row { display: flex; align-items: center; gap: 0.85rem; }
+.cinfo-icon {
+  width: 38px; height: 38px; border-radius: var(--r-sm);
+  background: var(--gold-grad); display: flex; align-items: center; justify-content: center;
+  font-size: 0.9rem; color: #0c0c0c; flex-shrink: 0;
+}
+.cinfo-row div span { display: block; font-size: 0.72rem; color: var(--muted); }
+.cinfo-row div strong { font-size: 0.88rem; font-weight: 600; }
+.contact-form-wrap { flex: 1; }
+.cform {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--r-md); padding: 2rem;
+}
+.cform h3 { font-family: var(--font-head); font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem; }
+.form-group { display: flex; flex-direction: column; gap: 0.35rem; margin-bottom: 1.1rem; }
+.form-group label { font-size: 0.78rem; font-weight: 600; color: var(--muted); letter-spacing: 0.4px; }
+.form-group input, .form-group textarea {
+  background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+  border-radius: var(--r-sm); padding: 0.8rem 1rem;
+  font-family: var(--font-body); font-size: 0.88rem; color: var(--white);
+  transition: var(--tr); outline: none; resize: none;
+}
+.form-group input::placeholder, .form-group textarea::placeholder { color: rgba(122,112,96,0.6); }
+.form-group input:focus, .form-group textarea:focus {
+  border-color: var(--gold); background: rgba(201,168,76,0.04);
+  box-shadow: 0 0 0 3px rgba(201,168,76,0.1);
+}
+.form-group textarea { min-height: 120px; }
+
+/* ── FOOTER ──────────────────────────────────────────────── */
+.footer {
+  background: var(--bg); border-top: 1px solid var(--border);
+  padding: 2rem 0; position: relative; z-index: 1;
+}
+.footer-inner {
+  max-width: 1160px; margin: 0 auto; padding: 0 2rem;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+}
+.footer-logo { font-family: var(--font-head); font-size: 1.3rem; font-weight: 900; }
+.footer p { font-size: 0.82rem; color: var(--muted); }
+.footer-nav { display: flex; gap: 1.5rem; }
+.footer-nav a { font-size: 0.82rem; color: var(--muted); transition: var(--tr); }
+.footer-nav a:hover { color: var(--gold); }
+
+/* ── RESPONSIVE ──────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .about-layout { grid-template-columns: 220px 1fr; gap: 2rem; }
+  .portfolio-grid { grid-template-columns: repeat(2,1fr); }
+  .skills-layout { flex-direction: column; }
+  .skills-chart-wrap { max-width: 100%; width: 100%; }
+  .cv-wrap { grid-template-columns: 240px 1fr; }
+}
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed; inset: 0;
+    background: rgba(10,10,10,0.97); backdrop-filter: blur(20px);
+    flex-direction: column; align-items: center; justify-content: center;
+    gap: 2rem; transform: translateX(-100%); transition: transform 0.4s ease; z-index: 899;
+  }
+  .nav-links.open { transform: translateX(0); }
+  .nav-link { font-size: 1.2rem; }
+  .hamburger { display: flex; }
+  .hero-wrap { flex-direction: column-reverse; gap: 2rem; text-align: center; }
+  .hero-text { max-width: 100%; }
+  .hero-cta { justify-content: center; }
+  .hero-visual { width: 260px; height: 260px; }
+  .ring-1 { width: 200px; height: 200px; }
+  .ring-2 { width: 240px; height: 240px; }
+  .avatar-frame { width: 160px; height: 160px; }
+  .badge-code { display: none; }
+  .about-layout { grid-template-columns: 1fr; }
+  .about-left { flex-direction: row; align-items: center; gap: 1.5rem; }
+  .about-row-2 { flex-direction: column; }
+  .portfolio-grid { grid-template-columns: 1fr; }
+  .cv-wrap { grid-template-columns: 1fr; }
+  .contact-layout { flex-direction: column; }
+  .footer-inner { flex-direction: column; text-align: center; }
+  .footer-nav { justify-content: center; }
+}
+@media (max-width: 480px) {
+  .hero-name { font-size: 2rem; }
+  .sec-title { font-size: 1.6rem; }
+  .hero-visual { width: 220px; height: 220px; }
+  .ring-1 { width: 170px; height: 170px; }
+  .ring-2 { width: 205px; height: 205px; }
+  .avatar-frame { width: 135px; height: 135px; }
+  .about-left { flex-direction: column; }
+  .cv-hobbies { grid-template-columns: 1fr; }
+}
+
+
+
+/* ══════════════════════════════════════════════════════════
+   ROYAL / KINGDOM THEME ADDITIONS
+   ══════════════════════════════════════════════════════════ */
+
+/* ── Royal Divider (section headers) ───────────────────── */
+.royal-divider {
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.royal-divider span {
+  font-size: 0.85rem;
+  color: var(--gold);
+  letter-spacing: 6px;
+  opacity: 0.7;
+}
+
+/* ── Hero: Royal Portrait Frame ────────────────────────── */
+.hero-visual {
+  flex-shrink: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+}
+
+.royal-frame-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+/* Crown SVG above portrait */
+.royal-crown {
+  width: 100px;
+  margin-bottom: -6px;
+  position: relative;
+  z-index: 4;
+  filter: drop-shadow(0 0 6px rgba(201,168,76,0.5));
+}
+.royal-crown svg { width: 100%; height: auto; }
+
+/* Portrait frame */
+.royal-portrait-frame {
+  position: relative;
+  width: 220px;
+  height: 280px;
+  border-radius: 50% 50% 12px 12px / 40% 40% 12px 12px;
+  background: var(--gold-grad);
+  padding: 3px;
+  box-shadow:
+    0 0 0 1px rgba(201,168,76,0.15),
+    0 0 30px rgba(201,168,76,0.2),
+    0 0 60px rgba(201,168,76,0.08);
+  z-index: 2;
+}
+
+/* Corner ornaments */
+.rp-corner {
+  position: absolute;
+  width: 18px; height: 18px;
+  border-color: var(--gold-lt);
+  border-style: solid;
+  z-index: 5;
+}
+.rp-tl { top: -2px; left: -2px; border-width: 2px 0 0 2px; border-radius: 3px 0 0 0; }
+.rp-tr { top: -2px; right: -2px; border-width: 2px 2px 0 0; border-radius: 0 3px 0 0; }
+.rp-bl { bottom: -2px; left: -2px; border-width: 0 0 2px 2px; border-radius: 0 0 0 3px; }
+.rp-br { bottom: -2px; right: -2px; border-width: 0 2px 2px 0; border-radius: 0 0 3px 0; }
+
+/* Side decorative lines */
+.rp-side { position: absolute; background: var(--gold); opacity: 0.4; }
+.rp-top    { top: 8px; left: 22px; right: 22px; height: 1px; }
+.rp-bottom { bottom: 8px; left: 22px; right: 22px; height: 1px; }
+.rp-left   { left: 8px; top: 22px; bottom: 22px; width: 1px; }
+.rp-right  { right: 8px; top: 22px; bottom: 22px; width: 1px; }
+
+/* Inner photo container */
+.rp-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 48% 48% 10px 10px / 38% 38% 10px 10px;
+  overflow: hidden;
+  background: var(--bg3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.royal-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+/* Nameplate below portrait */
+.royal-nameplate {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--gold);
+  padding: 0.45rem 1.2rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--gold-lt);
+  letter-spacing: 1px;
+  font-family: var(--font-head);
+  white-space: nowrap;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+  margin-top: -1px;
+  z-index: 3;
+  position: relative;
+}
+.rp-ornament { color: var(--gold); font-size: 0.6rem; }
+
+/* Floating badges repositioned for portrait */
+.badge-design { top: 10%; right: -30%; animation: floatY 4s ease-in-out infinite; }
+.badge-game   { bottom: 22%; left: -30%; animation: floatY 5s ease-in-out infinite 1s; }
+.badge-code   { bottom: 8%; right: -28%; animation: floatY 4.5s ease-in-out infinite 0.5s; }
+
+/* ── About: foto portrait ───────────────────────────────── */
+.about-avatar-wrap {
+  position: relative;
+  width: 200px;
+  height: 250px;
+  border-radius: 50% 50% 10px 10px / 35% 35% 10px 10px;
+  background: var(--bg3);
+  display: flex; align-items: center; justify-content: center;
+  border: none;
+  overflow: hidden;
+  box-shadow: 0 0 0 2px var(--gold), 0 0 20px rgba(201,168,76,0.2);
+}
+
+.about-avatar-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+/* ── CV photo: portrait style ───────────────────────────── */
+.cv-photo-wrap {
+  position: relative;
+  width: 130px;
+  height: 165px;
+  margin: 0 auto 1.25rem;
+  border-radius: 50% 50% 8px 8px / 35% 35% 8px 8px;
+  overflow: hidden;
+  box-shadow: 0 0 0 2px var(--gold), 0 0 16px rgba(201,168,76,0.25);
+}
+.cv-photo {
+  width: 130px;
+  height: 165px;
+  border-radius: 0;
+  object-fit: cover;
+  object-position: top center;
+  position: relative;
+  z-index: 2;
+}
+.cv-photo-ph {
+  width: 130px;
+  height: 165px;
+  border-radius: 0;
+  background: var(--bg3);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  color: var(--muted);
+  position: relative;
+  z-index: 2;
+}
+.cv-photo-ring { display: none; }
+
+/* ── Royal section background ornaments ─────────────────── */
+.about::before,
+.portfolio::before,
+.cv-section::before {
+  content: "⚜";
+  position: absolute;
+  top: 1.5rem;
+  right: 2.5rem;
+  font-size: 1.4rem;
+  color: var(--gold);
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: 0;
+}
+.skills::before {
+  content: "⚜";
+  position: absolute;
+  top: 1.5rem;
+  left: 2.5rem;
+  font-size: 1.4rem;
+  color: var(--gold);
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Royal card borders ─────────────────────────────────── */
+.about-block,
+.chart-card,
+.pcard,
+.cv-block,
+.cv-profile {
+  position: relative;
+}
+.about-block::before,
+.cv-block::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  border-radius: var(--r-md) var(--r-md) 0 0;
+  opacity: 0.5;
+}
+
+/* ── Hero royal glow ────────────────────────────────────── */
+.hero::after {
+  content: "";
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.3;
+}
+
+/* ── Footer royal additions ─────────────────────────────── */
+.footer-royal-top {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  margin-bottom: 1.25rem;
+}
+.footer-ornament {
+  font-size: 1.2rem;
+  color: var(--gold);
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+.footer-divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.4;
+}
+.footer-inner {
+  flex-direction: column;
+  text-align: center;
+  gap: 0.75rem;
+}
+.footer-nav { justify-content: center; }
+
+/* ── Navbar royal logo ──────────────────────────────────── */
+.nav-logo::before {
+  content: "⚜ ";
+  font-size: 0.9rem;
+  color: var(--gold);
+  opacity: 0.8;
+}
+
+/* ── Section head royal badge ───────────────────────────── */
+.sec-label::before,
+.sec-label::after {
+  content: " ✦ ";
+  font-size: 0.6rem;
+  opacity: 0.7;
+}
+
+/* ── Responsive adjustments ─────────────────────────────── */
+@media (max-width: 768px) {
+  .hero-visual { width: 240px; }
+  .royal-portrait-frame { width: 180px; height: 230px; }
+  .royal-crown { width: 80px; }
+  .badge-design { right: -20%; }
+  .badge-game   { left: -20%; }
+  .badge-code   { right: -18%; }
+  .about-avatar-wrap { width: 160px; height: 200px; }
+}
+@media (max-width: 480px) {
+  .royal-portrait-frame { width: 160px; height: 205px; }
+  .royal-crown { width: 70px; }
+  .badge-design, .badge-game, .badge-code { display: none; }
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   ROYAL DECORATIONS — ENHANCED
+   ══════════════════════════════════════════════════════════ */
+
+/* ── Hero corner ornaments ──────────────────────────────── */
+.royal-corner {
+  position: absolute;
+  width: 60px; height: 60px;
+  z-index: 2;
+  pointer-events: none;
+}
+.rc-tl { top: 12px; left: 12px; }
+.rc-tr { top: 12px; right: 12px; }
+.rc-bl { bottom: 12px; left: 12px; }
+.rc-br { bottom: 12px; right: 12px; }
+
+/* ── Hero top royal banner ──────────────────────────────── */
+.royal-banner-top {
+  position: absolute;
+  top: 5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  z-index: 2;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.rb-line {
+  width: 80px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.5;
+}
+.rb-fleur {
+  font-size: 1rem;
+  color: var(--gold);
+  opacity: 0.7;
+}
+.rb-gem {
+  font-size: 0.5rem;
+  color: var(--gold);
+  opacity: 0.6;
+}
+
+/* ── Section royal border (top of each section) ─────────── */
+.section-royal-border {
+  width: 100%;
+  height: 28px;
+  position: relative;
+  overflow: hidden;
+  pointer-events: none;
+  flex-shrink: 0;
+}
+.section-royal-border::before {
+  content: "◆ ─── ⚜ ─── ◆ ─── ⚜ ─── ◆ ─── ⚜ ─── ◆ ─── ⚜ ─── ◆ ─── ⚜ ─── ◆";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.65rem;
+  color: var(--gold);
+  opacity: 0.35;
+  letter-spacing: 4px;
+  white-space: nowrap;
+}
+
+/* ── Section corner ornaments (all sections) ────────────── */
+.about, .skills, .portfolio, .cv-section {
+  position: relative;
+}
+.about::after,
+.skills::after,
+.portfolio::after,
+.cv-section::after {
+  content: "";
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 5%, var(--gold) 30%, var(--gold-lt) 50%, var(--gold) 70%, transparent 95%);
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+/* ── Floating royal gems (background decoration) ────────── */
+.about::before  { content: "⚜"; top: 1.5rem; right: 2.5rem; font-size: 2rem; color: var(--gold); opacity: 0.08; position: absolute; pointer-events: none; z-index: 0; }
+.skills::before { content: "⚜"; top: 1.5rem; left: 2.5rem;  font-size: 2rem; color: var(--gold); opacity: 0.08; position: absolute; pointer-events: none; z-index: 0; }
+.portfolio::before { content: "⚜"; top: 1.5rem; right: 2.5rem; font-size: 2rem; color: var(--gold); opacity: 0.08; position: absolute; pointer-events: none; z-index: 0; }
+.cv-section::before { content: "⚜"; top: 1.5rem; left: 2.5rem; font-size: 2rem; color: var(--gold); opacity: 0.08; position: absolute; pointer-events: none; z-index: 0; }
+
+/* ── Section head: royal frame around title ─────────────── */
+.section-head {
+  position: relative;
+}
+.section-head::before {
+  content: "✦ ─────────────────── ✦";
+  display: block;
+  text-align: center;
+  font-size: 0.6rem;
+  color: var(--gold);
+  opacity: 0.4;
+  letter-spacing: 3px;
+  margin-bottom: 0.5rem;
+}
+.section-head::after {
+  content: "✦ ─────────────────── ✦";
+  display: block;
+  text-align: center;
+  font-size: 0.6rem;
+  color: var(--gold);
+  opacity: 0.4;
+  letter-spacing: 3px;
+  margin-top: 1rem;
+}
+
+/* ── Card royal top accent (thicker, more visible) ──────── */
+.about-block::before,
+.cv-block::before,
+.chart-card::before,
+.pcard::before,
+.cv-profile::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 10%; right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-lt), transparent);
+  opacity: 0.6;
+  border-radius: 0;
+}
+
+/* ── Card royal bottom accent ───────────────────────────── */
+.pcard::after {
+  content: "";
+  position: absolute;
+  bottom: 0; left: 10%; right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.3;
+}
+
+/* ── Skill bar royal label ──────────────────────────────── */
+.skill-item {
+  position: relative;
+  padding-left: 0.5rem;
+  border-left: 1px solid rgba(201,168,76,0.2);
+}
+
+/* ── CV quote royal frame ───────────────────────────────── */
+.cv-quote {
+  border-left: 3px solid var(--gold);
+  border-right: 3px solid var(--gold);
+}
+.cv-quote::after {
+  content: "⚜";
+  position: absolute;
+  bottom: 0.75rem;
+  right: 1rem;
+  font-size: 1rem;
+  color: var(--gold);
+  opacity: 0.2;
+}
+
+/* ── Royal scroll pattern on body background ────────────── */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(ellipse at 10% 20%, rgba(201,168,76,0.03) 0%, transparent 40%),
+    radial-gradient(ellipse at 90% 80%, rgba(201,168,76,0.03) 0%, transparent 40%),
+    radial-gradient(ellipse at 50% 50%, rgba(201,168,76,0.02) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Navbar royal underline ─────────────────────────────── */
+.navbar.scrolled {
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 2px 20px rgba(201,168,76,0.08);
+}
+.navbar.scrolled::after {
+  content: "";
+  position: absolute;
+  bottom: -1px; left: 5%; right: 5%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.4;
+}
+
+/* ── Royal portrait frame extra glow ───────────────────── */
+.royal-portrait-frame {
+  box-shadow:
+    0 0 0 1px rgba(201,168,76,0.2),
+    0 0 20px rgba(201,168,76,0.25),
+    0 0 50px rgba(201,168,76,0.1),
+    inset 0 0 20px rgba(201,168,76,0.05);
+}
+
+/* ── About avatar extra glow ────────────────────────────── */
+.about-avatar-wrap {
+  box-shadow:
+    0 0 0 2px var(--gold),
+    0 0 0 4px rgba(201,168,76,0.15),
+    0 0 25px rgba(201,168,76,0.2);
+}
+
+/* ── Footer royal enhancement ───────────────────────────── */
+.footer::before {
+  content: "◆ ── ⚜ ── ◆ ── ⚜ ── ◆ ── ⚜ ── ◆";
+  display: block;
+  text-align: center;
+  font-size: 0.6rem;
+  color: var(--gold);
+  opacity: 0.35;
+  letter-spacing: 5px;
+  padding-top: 1rem;
+}
+
+/* ── Gold shimmer animation on section labels ───────────── */
+@keyframes goldShimmer {
+  0%   { opacity: 0.7; }
+  50%  { opacity: 1; text-shadow: 0 0 8px rgba(201,168,76,0.6); }
+  100% { opacity: 0.7; }
+}
+.sec-label {
+  animation: goldShimmer 3s ease-in-out infinite;
+}
+
+/* ── Royal gem dots on timeline ─────────────────────────── */
+.cv-tl-dot,
+.edu-dot {
+  box-shadow: 0 0 0 3px rgba(201,168,76,0.1), 0 0 8px rgba(201,168,76,0.2);
+}
+.cv-tl-item.active .cv-tl-dot {
+  box-shadow: 0 0 0 3px rgba(201,168,76,0.2), 0 0 12px rgba(201,168,76,0.5);
+}
+
+/* ── Pcard hover royal glow ─────────────────────────────── */
+.pcard:hover {
+  box-shadow:
+    0 12px 40px rgba(0,0,0,0.5),
+    0 0 0 1px rgba(201,168,76,0.4),
+    0 0 30px rgba(201,168,76,0.12);
+}
+
+/* ── Royal nameplate shimmer ────────────────────────────── */
+@keyframes nameplateGlow {
+  0%, 100% { box-shadow: 0 4px 16px rgba(0,0,0,0.4), 0 0 8px rgba(201,168,76,0.1); }
+  50%       { box-shadow: 0 4px 20px rgba(0,0,0,0.5), 0 0 16px rgba(201,168,76,0.3); }
+}
+.royal-nameplate {
+  animation: nameplateGlow 3s ease-in-out infinite;
+}
+
+/* ── Crown shimmer ──────────────────────────────────────── */
+@keyframes crownGlow {
+  0%, 100% { filter: drop-shadow(0 0 4px rgba(201,168,76,0.4)); }
+  50%       { filter: drop-shadow(0 0 10px rgba(201,168,76,0.8)); }
+}
+.royal-crown {
+  animation: crownGlow 2.5s ease-in-out infinite;
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   FINAL ROYAL ENHANCEMENTS
+   ══════════════════════════════════════════════════════════ */
+
+/* ── Hero name satu baris ───────────────────────────────── */
+.hero-name {
+  white-space: nowrap;
+  font-size: clamp(1.6rem, 3.2vw, 2.8rem);
+}
+
+/* ── Skill description ──────────────────────────────────── */
+.skill-desc {
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.55;
+  margin-top: 0.3rem;
+  padding-left: 0.25rem;
+  border-left: 2px solid rgba(201,168,76,0.25);
+  padding-left: 0.6rem;
+}
+
+/* ── Portfolio placeholder colors per type ──────────────── */
+.pcard-placeholder.drawing  { background: linear-gradient(135deg, rgba(201,168,76,0.12), rgba(154,122,46,0.06)); }
+.pcard-placeholder.web      { background: linear-gradient(135deg, rgba(0,188,235,0.1),   rgba(201,168,76,0.06)); }
+.pcard-placeholder.taekwondo{ background: linear-gradient(135deg, rgba(220,50,50,0.1),   rgba(201,168,76,0.06)); }
+.pcard-placeholder.drawing i  { color: var(--gold); }
+.pcard-placeholder.web i      { color: #38bdf8; }
+.pcard-placeholder.taekwondo i{ color: #f87171; }
+
+/* ── CV link style ──────────────────────────────────────── */
+.cv-link {
+  color: var(--gold);
+  font-weight: 600;
+  font-size: 0.78rem;
+  transition: var(--tr);
+  text-decoration: none;
+}
+.cv-link:hover {
+  color: var(--gold-lt);
+  text-shadow: 0 0 8px rgba(201,168,76,0.4);
+}
+
+/* ══════════════════════════════════════════════════════════
+   ROYAL KINGDOM VIBES — MAXIMUM
+   ══════════════════════════════════════════════════════════ */
+
+/* ── Ornate border on every section ────────────────────── */
+.about, .skills, .portfolio, .cv-section {
+  border-left: 1px solid rgba(201,168,76,0.08);
+  border-right: 1px solid rgba(201,168,76,0.08);
+}
+
+/* ── Royal watermark per section ───────────────────────── */
+.skills::after {
+  content: "⚜";
+  position: absolute;
+  bottom: 1.5rem;
+  right: 2.5rem;
+  font-size: 2rem;
+  color: var(--gold);
+  opacity: 0.06;
+  pointer-events: none;
+}
+
+/* ── Navbar royal crest ─────────────────────────────────── */
+.nav-logo {
+  position: relative;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 4px;
+}
+.nav-logo::after {
+  content: "";
+  position: absolute;
+  bottom: -1px; left: 10%; right: 10%;
+  height: 1px;
+  background: var(--gold-grad2);
+  opacity: 0.5;
+}
+
+/* ── Section head royal arch ────────────────────────────── */
+.sec-title {
+  position: relative;
+  display: inline-block;
+}
+.sec-title::after {
+  content: "";
+  position: absolute;
+  bottom: -6px; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.4;
+}
+
+/* ── About block royal left accent ─────────────────────── */
+.about-block {
+  border-left: 2px solid rgba(201,168,76,0.2);
+}
+.about-block:hover {
+  border-left-color: rgba(201,168,76,0.5);
+}
+
+/* ── CV block royal left accent ─────────────────────────── */
+.cv-block {
+  border-left: 2px solid rgba(201,168,76,0.15);
+}
+
+/* ── Royal scroll on hero background ───────────────────── */
+.hero-wrap {
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Pcard royal tag ────────────────────────────────────── */
+.ptag {
+  font-family: var(--font-head);
+  letter-spacing: 0.5px;
+}
+
+/* ── Gold shimmer on hero name ──────────────────────────── */
+@keyframes heroNameShimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.hero-name {
+  background: linear-gradient(90deg, #9a7a2e 0%, #c9a84c 30%, #f0d080 50%, #c9a84c 70%, #9a7a2e 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: heroNameShimmer 4s linear infinite;
+}
+
+/* ── Royal divider enhanced ─────────────────────────────── */
+.royal-divider span {
+  font-size: 0.9rem;
+  letter-spacing: 8px;
+  color: var(--gold);
+  opacity: 0.6;
+  text-shadow: 0 0 10px rgba(201,168,76,0.3);
+}
+
+/* ── Section royal border enhanced ─────────────────────── */
+.section-royal-border::before {
+  content: "◆ ─── ⚜ ─── ✦ ─── ⚜ ─── ◆ ─── ⚜ ─── ✦ ─── ⚜ ─── ◆";
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  opacity: 0.4;
+}
+
+/* ── Gold glow on card hover ────────────────────────────── */
+.about-block:hover,
+.cv-block:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3), 0 0 15px rgba(201,168,76,0.08);
+}
+
+/* ── Royal footer crest ─────────────────────────────────── */
+.footer-logo {
+  position: relative;
+}
+.footer-logo::before {
+  content: "⚜ ";
+  color: var(--gold);
+  opacity: 0.7;
+}
+.footer-logo::after {
+  content: " ⚜";
+  color: var(--gold);
+  opacity: 0.7;
+}
+
+/* ── Pulsing gold border on portrait frame ──────────────── */
+@keyframes framePulse {
+  0%, 100% { box-shadow: 0 0 0 1px rgba(201,168,76,0.2), 0 0 20px rgba(201,168,76,0.2), 0 0 50px rgba(201,168,76,0.08); }
+  50%       { box-shadow: 0 0 0 2px rgba(201,168,76,0.4), 0 0 30px rgba(201,168,76,0.35), 0 0 70px rgba(201,168,76,0.15); }
+}
+.royal-portrait-frame {
+  animation: framePulse 3s ease-in-out infinite;
+}
+
+/* ── Royal scroll pattern overlay ──────────────────────── */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(ellipse at 15% 30%, rgba(201,168,76,0.06) 0%, transparent 45%),
+    radial-gradient(ellipse at 85% 70%, rgba(201,168,76,0.06) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 10%, rgba(201,168,76,0.04) 0%, transparent 35%),
+    radial-gradient(ellipse at 50% 90%, rgba(201,168,76,0.04) 0%, transparent 35%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   MASTER OVERRIDES — BIGGER HERO, LABELS ABOVE, RESPONSIVE
+   ══════════════════════════════════════════════════════════ */
+
+/* ── Section label ABOVE title ──────────────────────────── */
+.section-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.4rem;
+  margin-bottom: 3.5rem;
+}
+.section-head .royal-divider { order: 1; }
+.section-head .sec-label     { order: 2; }
+.section-head .sec-title     { order: 3; }
+.section-head .sec-sub       { order: 4; }
+.section-head .gold-line     { order: 5; }
+
+.sec-sub {
+  font-size: 0.9rem;
+  color: var(--muted);
+  max-width: 480px;
+  line-height: 1.6;
+  margin-top: 0.2rem;
+}
+
+/* ── Hero BIGGER ────────────────────────────────────────── */
+.hero-hi {
+  font-size: 1.15rem;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 0.3rem;
+  font-family: var(--font-body);
+  font-weight: 400;
+}
+.hero-name {
+  font-size: clamp(2rem, 4.5vw, 3.6rem) !important;
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+}
+.hero-desc {
+  font-size: 1.05rem;
+  line-height: 1.85;
+  max-width: 460px;
+}
+.hero-status {
+  font-size: 0.85rem;
+  padding: 0.4rem 1.1rem;
+  margin-bottom: 1.6rem;
+}
+.btn {
+  padding: 0.85rem 2rem;
+  font-size: 0.95rem;
+}
+.hero-wrap {
+  gap: 4rem;
+}
+
+/* ── Royal portrait bigger ──────────────────────────────── */
+.royal-portrait-frame {
+  width: 240px;
+  height: 305px;
+}
+.royal-crown { width: 110px; }
+.hero-visual { width: 340px; }
+
+/* ── CV skill description ───────────────────────────────── */
+.cv-skill-desc {
+  font-size: 0.74rem;
+  color: var(--muted);
+  line-height: 1.5;
+  margin: 0.2rem 0 0.7rem 0;
+  padding-left: 0.5rem;
+  border-left: 1px solid rgba(201,168,76,0.2);
+  font-style: italic;
+}
+
+/* ══════════════════════════════════════════════════════════
+   ROYAL DECORATIONS — EVERYWHERE
+   ══════════════════════════════════════════════════════════ */
+
+/* ── About blocks inner ornament ───────────────────────── */
+.about-block-head::after {
+  content: "✦";
+  margin-left: auto;
+  font-size: 0.55rem;
+  color: var(--gold);
+  opacity: 0.5;
+}
+
+/* ── CV block head ornament ─────────────────────────────── */
+.cv-block-head::after {
+  content: "◆";
+  margin-left: auto;
+  font-size: 0.5rem;
+  color: var(--gold);
+  opacity: 0.4;
+}
+
+/* ── Skill item royal dot ───────────────────────────────── */
+.skill-item::before {
+  content: "◆";
+  position: absolute;
+  left: -0.9rem;
+  top: 0.35rem;
+  font-size: 0.4rem;
+  color: var(--gold);
+  opacity: 0.5;
+}
+
+/* ── Portfolio card royal header line ───────────────────── */
+.pcard-body::before {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 1px;
+  background: var(--gold-grad2);
+  margin-bottom: 0.6rem;
+  opacity: 0.6;
+}
+
+/* ── Timeline item royal marker ─────────────────────────── */
+.cv-tl-body::before {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  margin-bottom: 0.3rem;
+  opacity: 0.4;
+}
+
+/* ── Gold shimmer on section labels ─────────────────────── */
+.sec-label {
+  position: relative;
+  padding: 0.15rem 0.8rem;
+  border: 1px solid rgba(201,168,76,0.25);
+  border-radius: 100px;
+  background: rgba(201,168,76,0.05);
+}
+
+/* ── Royal glow on gold-line ────────────────────────────── */
+.gold-line {
+  box-shadow: 0 0 8px rgba(201,168,76,0.3);
+}
+
+/* ── About name plate royal ─────────────────────────────── */
+.about-name-plate {
+  border-top: 2px solid var(--gold);
+  position: relative;
+}
+.about-name-plate::before {
+  content: "⚜";
+  position: absolute;
+  top: -0.7rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.8rem;
+  color: var(--gold);
+  background: var(--bg2);
+  padding: 0 0.3rem;
+}
+
+/* ── CV profile royal badge ─────────────────────────────── */
+.cv-role {
+  position: relative;
+  display: inline-block;
+}
+.cv-role::before { content: "✦ "; font-size: 0.6rem; }
+.cv-role::after  { content: " ✦"; font-size: 0.6rem; }
+
+/* ── Pcard tag royal ────────────────────────────────────── */
+.ptag::before { content: "◆ "; font-size: 0.55rem; }
+
+/* ── Footer royal ───────────────────────────────────────── */
+.footer p {
+  position: relative;
+}
+.footer p::before {
+  content: "✦ ";
+  color: var(--gold);
+  opacity: 0.5;
+  font-size: 0.6rem;
+}
+.footer p::after {
+  content: " ✦";
+  color: var(--gold);
+  opacity: 0.5;
+  font-size: 0.6rem;
+}
+
+/* ══════════════════════════════════════════════════════════
+   FULL RESPONSIVE — ALL DEVICES
+   ══════════════════════════════════════════════════════════ */
+
+/* ── Large desktop (1400px+) ────────────────────────────── */
+@media (min-width: 1400px) {
+  .section-wrap, .nav-container { max-width: 1300px; }
+  .hero-name { font-size: 4rem !important; }
+  .royal-portrait-frame { width: 260px; height: 330px; }
+}
+
+/* ── Tablet landscape (1024px) ──────────────────────────── */
+@media (max-width: 1024px) {
+  .hero-wrap { gap: 3rem; }
+  .hero-name { font-size: 2.8rem !important; }
+  .royal-portrait-frame { width: 210px; height: 268px; }
+  .royal-crown { width: 95px; }
+  .hero-visual { width: 280px; }
+  .about-layout { grid-template-columns: 200px 1fr; gap: 2rem; }
+  .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+  .skills-layout { flex-direction: column; }
+  .skills-chart-wrap { max-width: 100%; width: 100%; }
+  .cv-wrap { grid-template-columns: 240px 1fr; }
+}
+
+/* ── Tablet portrait (768px) ────────────────────────────── */
+@media (max-width: 768px) {
+  :root { font-size: 15px; }
+
+  /* Navbar mobile */
+  .nav-links {
+    position: fixed;
+    inset: 0;
+    background: rgba(8,8,8,0.98);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    transform: translateX(-100%);
+    transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+    z-index: 899;
+  }
+  .nav-links.open { transform: translateX(0); }
+  .nav-link { font-size: 1.3rem; font-weight: 600; }
+  .hamburger { display: flex; }
+
+  /* Hero mobile */
+  .hero { padding: 5rem 1.5rem 3rem; }
+  .hero-wrap {
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 2.5rem;
+  }
+  .hero-text { max-width: 100%; }
+  .hero-cta { justify-content: center; }
+  .hero-name { font-size: 2.2rem !important; white-space: normal !important; }
+  .hero-desc { margin: 0 auto 1.5rem; font-size: 0.95rem; }
+  .hero-visual { width: 240px; }
+  .royal-portrait-frame { width: 185px; height: 235px; }
+  .royal-crown { width: 80px; }
+  .royal-nameplate { font-size: 0.68rem; padding: 0.35rem 0.9rem; }
+  .badge-design { right: -15%; top: 8%; }
+  .badge-game   { left: -15%; bottom: 20%; }
+  .badge-code   { display: none; }
+  .royal-corner { width: 40px; height: 40px; }
+  .rc-tl { top: 8px; left: 8px; }
+  .rc-tr { top: 8px; right: 8px; }
+  .rc-bl { bottom: 8px; left: 8px; }
+  .rc-br { bottom: 8px; right: 8px; }
+
+  /* About mobile */
+  .about-layout { grid-template-columns: 1fr; }
+  .about-left {
+    flex-direction: row;
+    align-items: center;
+    gap: 1.5rem;
+    justify-content: center;
+  }
+  .about-avatar-wrap { width: 130px; height: 165px; flex-shrink: 0; }
+  .about-name-plate { flex: 1; text-align: left; }
+  .about-row-2 { flex-direction: column; }
+
+  /* Skills mobile */
+  .skills-layout { flex-direction: column; }
+  .skills-chart-wrap { max-width: 100%; }
+
+  /* Portfolio mobile */
+  .portfolio-grid { grid-template-columns: 1fr; }
+
+  /* CV mobile */
+  .cv-wrap { grid-template-columns: 1fr; }
+  .cv-hobbies { grid-template-columns: 1fr 1fr; }
+
+  /* Footer mobile */
+  .footer-inner { flex-direction: column; text-align: center; gap: 0.75rem; }
+  .footer-nav { justify-content: center; flex-wrap: wrap; gap: 1rem; }
+  .footer-royal-top { justify-content: center; }
+}
+
+/* ── Mobile (480px) ─────────────────────────────────────── */
+@media (max-width: 480px) {
+  :root { font-size: 14px; }
+
+  .hero { padding: 4.5rem 1rem 2.5rem; }
+  .hero-name { font-size: 1.9rem !important; }
+  .hero-hi { font-size: 1rem; }
+  .hero-desc { font-size: 0.9rem; }
+  .btn { padding: 0.7rem 1.4rem; font-size: 0.85rem; }
+  .hero-cta { gap: 0.6rem; }
+
+  .royal-portrait-frame { width: 160px; height: 204px; }
+  .royal-crown { width: 68px; }
+  .hero-visual { width: 200px; }
+  .badge-design, .badge-game, .badge-code { display: none; }
+
+  .sec-title { font-size: 1.6rem; }
+  .section-wrap { padding: 0 1rem; }
+  .about, .skills, .portfolio, .cv-section { padding: 4rem 0; }
+
+  .about-left { flex-direction: column; align-items: center; }
+  .about-avatar-wrap { width: 140px; height: 178px; }
+
+  .cv-wrap { grid-template-columns: 1fr; }
+  .cv-hobbies { grid-template-columns: 1fr; }
+  .cv-data-row { flex-direction: column; gap: 0.1rem; }
+  .cv-data-row strong { text-align: left; }
+
+  .portfolio-grid { grid-template-columns: 1fr; }
+  .pcard-img { height: 180px; }
+
+  .royal-corner { width: 30px; height: 30px; }
+  .royal-banner-top { display: none; }
+
+  .footer-nav { gap: 0.75rem; }
+}
+
+/* ── Small mobile (360px) ───────────────────────────────── */
+@media (max-width: 360px) {
+  .hero-name { font-size: 1.65rem !important; }
+  .royal-portrait-frame { width: 140px; height: 178px; }
+  .royal-crown { width: 58px; }
+  .hero-visual { width: 175px; }
+  .nav-container { padding: 0 1rem; }
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   FIXES: BADGES CLOSER, NAME SMALLER, PORTFOLIO PREVIEW,
+          SCROLL ANIMATION GLITCH FIX
+   ══════════════════════════════════════════════════════════ */
+
+/* ── 1. Floating badges lebih merapat ke foto ───────────── */
+.hero-visual {
+  position: relative;
+  width: 340px;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Badge posisi merapat — relatif terhadap royal-frame-wrap */
+.royal-frame-wrap {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.floating-badge {
+  position: absolute;
+  background: rgba(20,20,20,0.92);
+  border: 1px solid rgba(201,168,76,0.4);
+  border-radius: 6px;
+  padding: 0.35rem 0.7rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--white);
+  white-space: nowrap;
+  z-index: 10;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.5);
+  backdrop-filter: blur(6px);
+}
+.floating-badge i { color: var(--gold); margin-right: 3px; font-size: 0.7rem; }
+
+/* Posisi badge merapat ke sisi frame portrait */
+.badge-design {
+  top: 18%;
+  right: -90px;
+  animation: floatY 4s ease-in-out infinite;
+}
+.badge-game {
+  bottom: 28%;
+  left: -85px;
+  animation: floatY 5s ease-in-out infinite 1s;
+}
+.badge-code {
+  bottom: 12%;
+  right: -80px;
+  animation: floatY 4.5s ease-in-out infinite 0.5s;
+}
+
+/* ── 2. Hero name lebih kecil agar satu baris ───────────── */
+.hero-name {
+  font-size: clamp(1.5rem, 3vw, 2.4rem) !important;
+  white-space: nowrap !important;
+  letter-spacing: -0.3px;
+}
+
+/* ── 3. Portfolio preview — gambar samar sesuai konten ──── */
+
+/* Drawing card — nuansa sketsa/kertas */
+.pcard:nth-child(1) .pcard-placeholder.drawing {
+  background:
+    linear-gradient(135deg, rgba(201,168,76,0.15) 0%, rgba(154,122,46,0.08) 100%);
+  position: relative;
+  overflow: hidden;
+}
+.pcard:nth-child(1) .pcard-placeholder.drawing::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 18px,
+      rgba(201,168,76,0.06) 18px,
+      rgba(201,168,76,0.06) 19px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 18px,
+      rgba(201,168,76,0.04) 18px,
+      rgba(201,168,76,0.04) 19px
+    );
+}
+.pcard:nth-child(1) .pcard-placeholder.drawing::after {
+  content: "✏";
+  position: absolute;
+  font-size: 4rem;
+  opacity: 0.12;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%) rotate(-15deg);
+  color: var(--gold);
+}
+.pcard:nth-child(1) .pcard-placeholder.drawing i {
+  font-size: 2.8rem;
+  color: var(--gold);
+  opacity: 0.5;
+  position: relative;
+  z-index: 1;
+}
+
+/* Website Kelompok card — nuansa browser/web */
+.pcard:nth-child(2) .pcard-placeholder.web {
+  background: linear-gradient(135deg, rgba(30,40,60,0.8) 0%, rgba(20,30,50,0.9) 100%);
+  position: relative;
+  overflow: hidden;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.pcard:nth-child(2) .pcard-placeholder.web::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 28px;
+  background: rgba(201,168,76,0.08);
+  border-bottom: 1px solid rgba(201,168,76,0.15);
+}
+.pcard:nth-child(2) .pcard-placeholder.web::after {
+  content: "● ● ●";
+  position: absolute;
+  top: 7px; left: 10px;
+  font-size: 0.55rem;
+  color: rgba(201,168,76,0.4);
+  letter-spacing: 3px;
+}
+.pcard:nth-child(2) .pcard-placeholder.web i {
+  font-size: 2.5rem;
+  color: #38bdf8;
+  opacity: 0.35;
+  position: relative;
+  z-index: 1;
+  margin-top: 1rem;
+}
+
+/* Taekwondo card — nuansa arena/merah */
+.pcard:nth-child(3) .pcard-placeholder.taekwondo {
+  background: linear-gradient(135deg, rgba(60,10,10,0.85) 0%, rgba(40,5,5,0.9) 100%);
+  position: relative;
+  overflow: hidden;
+}
+.pcard:nth-child(3) .pcard-placeholder.taekwondo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at center, rgba(200,30,30,0.12) 0%, transparent 65%);
+}
+.pcard:nth-child(3) .pcard-placeholder.taekwondo::after {
+  content: "🥋";
+  position: absolute;
+  font-size: 3.5rem;
+  opacity: 0.1;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+.pcard:nth-child(3) .pcard-placeholder.taekwondo i {
+  font-size: 2.8rem;
+  color: #f87171;
+  opacity: 0.45;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── 4. Perbaiki animasi scroll (AOS glitch) ────────────── */
+
+/* Reset semua data-aos agar tidak ada transform yang konflik */
+[data-aos] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+}
+
+[data-aos="fade-left"] {
+  opacity: 0;
+  transform: translateX(-24px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+[data-aos="fade-right"] {
+  opacity: 0;
+  transform: translateX(24px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+[data-aos].aos-animate {
+  opacity: 1 !important;
+  transform: translateY(0) translateX(0) !important;
+}
+
+/* Delay support */
+[data-aos-delay="100"] { transition-delay: 0.1s; }
+[data-aos-delay="200"] { transition-delay: 0.2s; }
+[data-aos-delay="300"] { transition-delay: 0.3s; }
+
+/* Pastikan elemen yang sudah animate tidak glitch saat resize */
+.aos-animate {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* ── Responsive badge fix ───────────────────────────────── */
+@media (max-width: 768px) {
+  .badge-design { right: -75px; top: 15%; }
+  .badge-game   { left: -70px; bottom: 25%; }
+  .badge-code   { right: -68px; bottom: 10%; }
+  .hero-name { font-size: clamp(1.3rem, 5vw, 2rem) !important; }
+}
+@media (max-width: 480px) {
+  .badge-design, .badge-game, .badge-code { display: none; }
+  .hero-name { font-size: 1.5rem !important; white-space: normal !important; }
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   ROYAL DECORATIONS — ABOUT, SKILLS, PORTFOLIO, CV
+   Dense ornamental theme — fills empty space
+   ══════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────
+   ABOUT SECTION
+   ───────────────────────────────────────────────────────── */
+
+/* Large watermark fleur behind about content */
+.about .section-wrap::before {
+  content: "⚜";
+  position: absolute;
+  font-size: 18rem;
+  color: var(--gold);
+  opacity: 0.025;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 0;
+  line-height: 1;
+}
+
+/* Ornate top border on about-left avatar */
+.about-avatar-wrap::before {
+  content: "";
+  position: absolute;
+  top: -8px; left: 10%; right: 10%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  z-index: 5;
+}
+.about-avatar-wrap::after {
+  content: "";
+  position: absolute;
+  bottom: -8px; left: 10%; right: 10%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  z-index: 5;
+}
+
+/* Royal side ornaments on about-right */
+.about-right {
+  position: relative;
+}
+.about-right::before {
+  content: "";
+  position: absolute;
+  left: -1.5rem;
+  top: 0; bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--gold), var(--gold), transparent);
+  opacity: 0.2;
+}
+
+/* Each about-block gets a subtle inner glow */
+.about-block {
+  background: linear-gradient(135deg, var(--card) 0%, rgba(25,22,16,0.95) 100%);
+  box-shadow: inset 0 1px 0 rgba(201,168,76,0.08), inset 0 -1px 0 rgba(201,168,76,0.05);
+}
+
+/* About block — corner dots */
+.about-block::after {
+  content: "◆";
+  position: absolute;
+  bottom: 0.6rem;
+  right: 0.8rem;
+  font-size: 0.4rem;
+  color: var(--gold);
+  opacity: 0.3;
+}
+
+/* Family cards royal inner border */
+.family-card {
+  position: relative;
+  overflow: hidden;
+}
+.family-card::after {
+  content: "";
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.3;
+}
+
+/* Education timeline — royal connector */
+.edu-timeline::after {
+  content: "⚜";
+  position: absolute;
+  bottom: -0.5rem;
+  left: -0.15rem;
+  font-size: 0.7rem;
+  color: var(--gold);
+  opacity: 0.5;
+}
+
+/* About name plate — royal seal */
+.about-name-plate {
+  position: relative;
+  overflow: hidden;
+}
+.about-name-plate::after {
+  content: "✦ SMKN 7 SEMARANG ✦";
+  position: absolute;
+  bottom: -0.1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.5rem;
+  color: var(--gold);
+  opacity: 0.25;
+  letter-spacing: 2px;
+  white-space: nowrap;
+}
+
+/* Hobby list royal bullets */
+.hobby-list span::before {
+  content: "◆ ";
+  font-size: 0.45rem;
+  color: var(--gold);
+  opacity: 0.6;
+  vertical-align: middle;
+}
+
+/* Skill badges royal glow */
+.sbadge {
+  box-shadow: 0 0 8px rgba(201,168,76,0.1);
+  transition: var(--tr);
+}
+.sbadge:hover {
+  box-shadow: 0 0 14px rgba(201,168,76,0.3);
+  transform: translateY(-1px);
+}
+
+/* ─────────────────────────────────────────────────────────
+   SKILLS SECTION
+   ───────────────────────────────────────────────────────── */
+
+/* Large watermark */
+.skills .section-wrap::before {
+  content: "◆";
+  position: absolute;
+  font-size: 22rem;
+  color: var(--gold);
+  opacity: 0.018;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  pointer-events: none;
+  z-index: 0;
+  line-height: 1;
+}
+
+/* Skills bars container — royal frame */
+.skills-bars {
+  position: relative;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(20,20,20,0.8), rgba(14,12,8,0.9));
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: inset 0 0 30px rgba(201,168,76,0.03);
+}
+
+/* Royal top bar on skills container */
+.skills-bars::before {
+  content: "◆ ── Skills ── ◆";
+  position: absolute;
+  top: -0.65rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.62rem;
+  font-weight: 600;
+  color: var(--gold);
+  background: var(--bg);
+  padding: 0 0.75rem;
+  letter-spacing: 2px;
+  white-space: nowrap;
+  opacity: 0.7;
+}
+
+/* Royal bottom ornament on skills container */
+.skills-bars::after {
+  content: "✦ ── ✦ ── ✦";
+  position: absolute;
+  bottom: -0.65rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.55rem;
+  color: var(--gold);
+  background: var(--bg);
+  padding: 0 0.75rem;
+  letter-spacing: 3px;
+  white-space: nowrap;
+  opacity: 0.5;
+}
+
+/* Each skill item — left royal accent */
+.skill-item {
+  position: relative;
+  padding: 0.75rem 0.75rem 0.75rem 1rem;
+  border-radius: var(--r-sm);
+  background: rgba(201,168,76,0.02);
+  border: 1px solid rgba(201,168,76,0.06);
+  transition: var(--tr);
+}
+.skill-item:hover {
+  background: rgba(201,168,76,0.05);
+  border-color: rgba(201,168,76,0.15);
+}
+.skill-item::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 20%; bottom: 20%;
+  width: 2px;
+  background: var(--gold-grad2);
+  border-radius: 2px;
+  opacity: 0.5;
+}
+
+/* Chart card royal enhancement */
+.chart-card {
+  position: relative;
+  background: linear-gradient(135deg, rgba(20,20,20,0.9), rgba(14,12,8,0.95));
+  box-shadow: inset 0 0 40px rgba(201,168,76,0.03), 0 0 20px rgba(0,0,0,0.4);
+}
+.chart-card::before {
+  content: "⚜ Skill Overview ⚜";
+  position: absolute;
+  top: -0.65rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: var(--gold);
+  background: var(--bg);
+  padding: 0 0.75rem;
+  letter-spacing: 2px;
+  white-space: nowrap;
+  opacity: 0.7;
+}
+.chart-card-head { display: none; } /* replaced by ::before */
+
+/* ─────────────────────────────────────────────────────────
+   PORTFOLIO SECTION
+   ───────────────────────────────────────────────────────── */
+
+/* Large watermark */
+.portfolio .section-wrap::before {
+  content: "✦";
+  position: absolute;
+  font-size: 20rem;
+  color: var(--gold);
+  opacity: 0.02;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 0;
+  line-height: 1;
+}
+
+/* Portfolio grid — royal outer frame */
+.portfolio-grid {
+  position: relative;
+  padding: 1.5rem;
+  border: 1px solid rgba(201,168,76,0.1);
+  border-radius: var(--r-lg);
+  background: rgba(201,168,76,0.015);
+}
+.portfolio-grid::before {
+  content: "◆";
+  position: absolute;
+  top: -0.5rem; left: -0.5rem;
+  font-size: 0.6rem;
+  color: var(--gold);
+  opacity: 0.5;
+}
+.portfolio-grid::after {
+  content: "◆";
+  position: absolute;
+  bottom: -0.5rem; right: -0.5rem;
+  font-size: 0.6rem;
+  color: var(--gold);
+  opacity: 0.5;
+}
+
+/* Pcard — richer styling */
+.pcard {
+  background: linear-gradient(160deg, rgba(22,20,14,0.95) 0%, rgba(14,12,8,0.98) 100%);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4), inset 0 1px 0 rgba(201,168,76,0.06);
+}
+
+/* Pcard body — royal bottom line */
+.pcard-body {
+  position: relative;
+  padding-bottom: 1.5rem;
+}
+.pcard-body::after {
+  content: "✦ ── ✦";
+  position: absolute;
+  bottom: 0.5rem;
+  right: 1rem;
+  font-size: 0.45rem;
+  color: var(--gold);
+  opacity: 0.3;
+  letter-spacing: 3px;
+}
+
+/* Pcard image — gold shimmer on hover */
+.pcard-img::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    transparent 40%,
+    rgba(201,168,76,0.06) 50%,
+    transparent 60%
+  );
+  background-size: 200% 200%;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.pcard:hover .pcard-img::after { opacity: 1; }
+
+/* Pcard title royal underline */
+.pcard-body h3 {
+  position: relative;
+  padding-bottom: 0.4rem;
+}
+.pcard-body h3::after {
+  content: "";
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 30px; height: 1px;
+  background: var(--gold-grad2);
+  opacity: 0.6;
+}
+
+/* ─────────────────────────────────────────────────────────
+   CV SECTION
+   ───────────────────────────────────────────────────────── */
+
+/* Large watermark */
+.cv-section .section-wrap::before {
+  content: "CV";
+  position: absolute;
+  font-size: 16rem;
+  font-family: var(--font-head);
+  font-weight: 900;
+  color: var(--gold);
+  opacity: 0.02;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 0;
+  line-height: 1;
+  letter-spacing: -5px;
+}
+
+/* CV wrap — outer royal border */
+.cv-wrap {
+  position: relative;
+  padding: 1.5rem;
+  border: 1px solid rgba(201,168,76,0.1);
+  border-radius: var(--r-lg);
+  background: rgba(201,168,76,0.01);
+}
+.cv-wrap::before {
+  content: "⚜ Curriculum Vitae ⚜";
+  position: absolute;
+  top: -0.65rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: var(--gold);
+  background: var(--bg);
+  padding: 0 1rem;
+  letter-spacing: 3px;
+  white-space: nowrap;
+  opacity: 0.6;
+}
+.cv-wrap::after {
+  content: "◆ ── ✦ ── ◆ ── ✦ ── ◆";
+  position: absolute;
+  bottom: -0.65rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.5rem;
+  color: var(--gold);
+  background: var(--bg);
+  padding: 0 1rem;
+  letter-spacing: 3px;
+  white-space: nowrap;
+  opacity: 0.45;
+}
+
+/* CV profile card — royal seal at bottom */
+.cv-profile {
+  position: relative;
+  background: linear-gradient(160deg, rgba(22,20,14,0.95), rgba(14,12,8,0.98));
+  box-shadow: inset 0 0 30px rgba(201,168,76,0.04);
+}
+.cv-profile::after {
+  content: "⚜";
+  position: absolute;
+  bottom: 0.75rem;
+  right: 0.75rem;
+  font-size: 0.9rem;
+  color: var(--gold);
+  opacity: 0.15;
+}
+
+/* CV photo — royal outer ring */
+.cv-photo-wrap {
+  position: relative;
+}
+.cv-photo-wrap::before {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: inherit;
+  border: 1px solid rgba(201,168,76,0.2);
+  z-index: 0;
+}
+
+/* CV block — richer background */
+.cv-block {
+  background: linear-gradient(135deg, rgba(22,20,14,0.9), rgba(14,12,8,0.95));
+  box-shadow: inset 0 1px 0 rgba(201,168,76,0.07), 0 2px 12px rgba(0,0,0,0.3);
+}
+
+/* CV data rows — alternating subtle bg */
+.cv-data-row:nth-child(even) {
+  background: rgba(201,168,76,0.02);
+  border-radius: 3px;
+  padding-left: 0.3rem;
+  padding-right: 0.3rem;
+}
+
+/* CV timeline — richer dots */
+.cv-tl-dot {
+  box-shadow: 0 0 0 3px rgba(201,168,76,0.08), 0 0 8px rgba(201,168,76,0.15);
+}
+.cv-tl-dot.gold {
+  box-shadow: 0 0 0 3px rgba(201,168,76,0.15), 0 0 12px rgba(201,168,76,0.3);
+}
+
+/* CV timeline body — royal left accent */
+.cv-tl-body {
+  position: relative;
+  padding: 0.6rem 0.75rem;
+  background: rgba(201,168,76,0.02);
+  border-radius: var(--r-sm);
+  border: 1px solid rgba(201,168,76,0.06);
+}
+.cv-tl-body:hover {
+  background: rgba(201,168,76,0.04);
+  border-color: rgba(201,168,76,0.12);
+}
+
+/* CV tags — royal pill glow */
+.cv-tags span {
+  transition: var(--tr);
+}
+.cv-tags span:hover {
+  background: rgba(201,168,76,0.15);
+  box-shadow: 0 0 10px rgba(201,168,76,0.2);
+  transform: translateY(-1px);
+}
+
+/* CV quote — royal arch *
+.cv-quote {
+  background: linear-gradient(135deg, rgba(22,20,14,0.95), rgba(14,12,8,0.98));
+  border-left: 3px solid var(--gold);
+  border-right: 3px solid var(--gold);
+  position: relative;
+}
+.cv-quote::before {
+  content: "◆ ── ✦ ── ◆";
+  position: absolute;
+  top: -0.6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.5rem;
+  color: var(--gold);
+  background: var(--bg);
+  padding: 0 0.75rem;
+  letter-spacing: 4px;
+  white-space: nowrap;
+  opacity: 0.5;
+}
+
+/* ─────────────────────────────────────────────────────────
+   SECTION SHARED — extra royal atmosphere
+   ───────────────────────────────────────────────────────── */
+
+/* Section wrap needs relative for watermarks */
+.section-wrap {
+  position: relative;
+}
+
+/* Subtle gold vignette on all sections */
+.about, .skills, .portfolio, .cv-section {
+  background-image:
+    radial-gradient(ellipse at 0% 0%, rgba(201,168,76,0.04) 0%, transparent 40%),
+    radial-gradient(ellipse at 100% 100%, rgba(201,168,76,0.04) 0%, transparent 40%);
+}
+
+/* Section border top — ornate */
+.section-royal-border {
+  height: 32px;
+  position: relative;
+  overflow: visible;
+}
+.section-royal-border::before {
+  content: "◆ ─── ⚜ ─── ✦ ─── ⚜ ─── ◆ ─── ⚜ ─── ✦ ─── ⚜ ─── ◆ ─── ⚜ ─── ✦";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.65rem;
+  color: var(--gold);
+  opacity: 0.3;
+  letter-spacing: 4px;
+  white-space: nowrap;
+}
+.section-royal-border::after {
+  content: "";
+  position: absolute;
+  top: 50%; left: 5%; right: 5%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,168,76,0.2), rgba(201,168,76,0.4), rgba(201,168,76,0.2), transparent);
+  transform: translateY(-50%);
+}
+
+
+/* ── CV Quote — hapus border kotak, ganti gaya elegan ───── */
+.cv-quote {
+  background: transparent !important;
+  border: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 2rem 1.5rem !important;
+  text-align: center;
+  position: relative;
+}
+
+/* Garis emas tipis hanya di atas dan bawah */
+.cv-quote::before {
+  content: "◆ ── ✦ ── ◆" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  background: transparent !important;
+  font-size: 0.55rem !important;
+  color: var(--gold) !important;
+  opacity: 0.5 !important;
+  letter-spacing: 5px !important;
+  white-space: nowrap !important;
+  padding: 0 !important;
+}
+
+.cv-quote::after {
+  content: "◆ ── ✦ ── ◆";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.55rem;
+  color: var(--gold);
+  opacity: 0.5;
+  letter-spacing: 5px;
+  white-space: nowrap;
+}
+
+.cv-quote i {
+  font-size: 1.6rem;
+  color: var(--gold);
+  opacity: 0.5;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.cv-quote blockquote {
+  font-family: var(--font-head);
+  font-style: italic;
+  font-size: 0.95rem;
+  line-height: 1.85;
+  color: var(--white);
+  margin-bottom: 0.75rem;
+}
+
+.cv-quote p {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--gold);
+}

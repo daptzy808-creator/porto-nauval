@@ -1,0 +1,611 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nauval Daffa Raditya</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo">Personal Branding<span class="logo-dot">.</span></a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#hero" class="nav-link active">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+        <li><a href="#testimonial" class="nav-link">CV</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <!-- Royal corner ornaments -->
+    <div class="royal-corner rc-tl">
+      <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5,55 L5,5 L55,5" fill="none" stroke="#c9a84c" stroke-width="1.5" opacity="0.6"/>
+        <path d="M5,30 Q20,20 30,5" fill="none" stroke="#c9a84c" stroke-width="1" opacity="0.4"/>
+        <circle cx="5" cy="5" r="3" fill="#c9a84c" opacity="0.8"/>
+        <circle cx="30" cy="5" r="2" fill="#c9a84c" opacity="0.5"/>
+        <circle cx="5" cy="30" r="2" fill="#c9a84c" opacity="0.5"/>
+      </svg>
+    </div>
+    <div class="royal-corner rc-tr">
+      <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+        <path d="M55,55 L55,5 L5,5" fill="none" stroke="#c9a84c" stroke-width="1.5" opacity="0.6"/>
+        <path d="M55,30 Q40,20 30,5" fill="none" stroke="#c9a84c" stroke-width="1" opacity="0.4"/>
+        <circle cx="55" cy="5" r="3" fill="#c9a84c" opacity="0.8"/>
+        <circle cx="30" cy="5" r="2" fill="#c9a84c" opacity="0.5"/>
+        <circle cx="55" cy="30" r="2" fill="#c9a84c" opacity="0.5"/>
+      </svg>
+    </div>
+    <div class="royal-corner rc-bl">
+      <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5,5 L5,55 L55,55" fill="none" stroke="#c9a84c" stroke-width="1.5" opacity="0.6"/>
+        <circle cx="5" cy="55" r="3" fill="#c9a84c" opacity="0.8"/>
+      </svg>
+    </div>
+    <div class="royal-corner rc-br">
+      <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+        <path d="M55,5 L55,55 L5,55" fill="none" stroke="#c9a84c" stroke-width="1.5" opacity="0.6"/>
+        <circle cx="55" cy="55" r="3" fill="#c9a84c" opacity="0.8"/>
+      </svg>
+    </div>
+    <!-- Top royal banner -->
+    <div class="royal-banner-top">
+      <span class="rb-gem">◆</span>
+      <div class="rb-line"></div>
+      <span class="rb-fleur">⚜</span>
+      <div class="rb-line"></div>
+      <span class="rb-gem">◆</span>
+    </div>
+    <div class="hero-wrap">
+      <div class="hero-visual">
+        <!-- Ornamen kerajaan atas -->
+        <div class="royal-frame-wrap">
+          <div class="royal-crown">
+            <svg viewBox="0 0 120 50" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="10,45 10,15 30,30 60,5 90,30 110,15 110,45" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linejoin="round"/>
+              <circle cx="60" cy="5" r="4" fill="#c9a84c"/>
+              <circle cx="10" cy="15" r="3" fill="#c9a84c"/>
+              <circle cx="110" cy="15" r="3" fill="#c9a84c"/>
+            </svg>
+          </div>
+          <div class="royal-portrait-frame">
+            <div class="rp-corner rp-tl"></div>
+            <div class="rp-corner rp-tr"></div>
+            <div class="rp-corner rp-bl"></div>
+            <div class="rp-corner rp-br"></div>
+            <div class="rp-side rp-top"></div>
+            <div class="rp-side rp-bottom"></div>
+            <div class="rp-side rp-left"></div>
+            <div class="rp-side rp-right"></div>
+            <div class="rp-inner">
+              <img src="foto/foto-hero.jpeg" alt="Nauval Daffa Raditya"
+                   class="royal-photo"
+                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+              <div class="avatar-placeholder" style="display:none;">
+                <i class="fa-solid fa-user"></i>
+                <span>NDR</span>
+              </div>
+            </div>
+          </div>
+          <div class="royal-nameplate">
+            <span class="rp-ornament">✦</span>
+            <span>Nauval Daffa Raditya</span>
+            <span class="rp-ornament">✦</span>
+          </div>
+        </div>
+        <div class="floating-badge badge-design"><i class="fa-solid fa-pen-nib"></i> Design</div>
+        <div class="floating-badge badge-game"><i class="fa-solid fa-gamepad"></i> Gaming</div>
+        <div class="floating-badge badge-code"><i class="fa-solid fa-code"></i> Code</div>
+      </div>
+      <div class="hero-text">
+        <div class="hero-status"><span class="pulse-dot"></span> Available for collaboration</div>
+        <h1 class="hero-title">
+          <span class="hero-hi">Hello, I am</span>
+          <span class="hero-name">Nauval Daffa Raditya</span>
+        </h1>
+        <p class="hero-desc">Saya tertarik dengan desain grafis terutama desain web, dan cukup suka bermain game di waktu luang.</p>
+        <div class="hero-cta">
+          <a href="#about" class="btn btn-gold">Kenali Saya <i class="fa-solid fa-arrow-down"></i></a>
+          <a href="#portfolio" class="btn btn-outline">Portfolio <i class="fa-solid fa-briefcase"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-hint"><i class="fa-solid fa-chevron-down"></i></div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="section-royal-border"></div>
+    <div class="section-wrap">
+      <div class="section-head" data-aos="fade-up">
+        <div class="royal-divider"><span>✦ ── ✦ ── ✦</span></div>
+        <span class="sec-label">Tentang Saya</span>
+        <h2 class="sec-title">Who Am <em>I?</em></h2>
+        <p class="sec-sub">Mengenal lebih dekat siapa saya sebenarnya</p>
+        <div class="gold-line"></div>
+      </div>
+
+      <div class="about-layout" data-aos="fade-up">
+        <!-- kiri: avatar besar -->
+        <div class="about-left">
+          <div class="about-avatar-wrap">
+            <div class="corner tl"></div>
+            <div class="corner tr"></div>
+            <div class="corner bl"></div>
+            <div class="corner br"></div>
+            <img src="foto/foto-profil.jpeg" alt="Nauval Daffa Raditya"
+                 class="about-avatar-photo"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="about-avatar-inner" style="display:none;">
+              <i class="fa-solid fa-user"></i>
+              <span>NDR</span>
+            </div>
+          </div>
+          <div class="about-name-plate">
+            <strong>Nauval Daffa Raditya</strong>
+            <span>Siswa SMKN 7 Semarang</span>
+          </div>
+        </div>
+
+        <!-- kanan: info -->
+        <div class="about-right">
+
+          <!-- Keluarga -->
+          <div class="about-block">
+            <div class="about-block-head">
+              <i class="fa-solid fa-house-heart"></i>
+              <h3>Riwayat Keluarga</h3>
+            </div>
+            <div class="family-row">
+              <div class="family-card">
+                <i class="fa-solid fa-person"></i>
+                <div>
+                  <strong>Ayah</strong>
+                  <span>Karyawan</span>
+                </div>
+              </div>
+              <div class="family-card">
+                <i class="fa-solid fa-person-dress"></i>
+                <div>
+                  <strong>Ibu</strong>
+                  <span>Karyawan</span>
+                </div>
+              </div>
+            </div>
+            <p class="about-note">Saya anak tunggal. Keluarga adalah motivasi terbesar saya.</p>
+          </div>
+
+          <!-- Pendidikan -->
+          <div class="about-block">
+            <div class="about-block-head">
+              <i class="fa-solid fa-graduation-cap"></i>
+              <h3>Riwayat Pendidikan</h3>
+            </div>
+            <div class="edu-timeline">
+              <div class="edu-item">
+                <div class="edu-dot"></div>
+                <div class="edu-info">
+                  <strong>TK Siwipeni 2</strong>
+                  <span>Taman Kanak-Kanak</span>
+                </div>
+              </div>
+              <div class="edu-item">
+                <div class="edu-dot"></div>
+                <div class="edu-info">
+                  <strong>SDN Rejosari 1</strong>
+                  <span>Sekolah Dasar</span>
+                </div>
+              </div>
+              <div class="edu-item">
+                <div class="edu-dot"></div>
+                <div class="edu-info">
+                  <strong>SMP Negeri 3 Semarang</strong>
+                  <span>Sekolah Menengah Pertama</span>
+                </div>
+              </div>
+              <div class="edu-item active">
+                <div class="edu-dot"></div>
+                <div class="edu-info">
+                  <strong>SMKN 7 Semarang</strong>
+                  <span>Sekolah Menengah Kejuruan <span class="badge-now">Sekarang</span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hobi & Minat -->
+          <div class="about-row-2">
+            <div class="about-block half">
+              <div class="about-block-head">
+                <i class="fa-solid fa-heart"></i>
+                <h3>Hobi</h3>
+              </div>
+              <div class="hobby-list">
+                <span><i class="fa-solid fa-gamepad"></i> Bermain Game</span>
+                <span><i class="fa-solid fa-pencil"></i> Menggambar</span>
+              </div>
+            </div>
+            <div class="about-block half">
+              <div class="about-block-head">
+                <i class="fa-solid fa-eye"></i>
+                <h3>Minat</h3>
+              </div>
+              <p>Estetika visual dan <strong>desain web</strong>. Percaya tampilan yang baik menciptakan pengalaman yang berkesan.</p>
+            </div>
+          </div>
+
+          <!-- Cita-cita & Kelebihan -->
+          <div class="about-row-2">
+            <div class="about-block half">
+              <div class="about-block-head">
+                <i class="fa-solid fa-star"></i>
+                <h3>Cita-Cita</h3>
+              </div>
+              <p>Sukses di usia muda sebagai <strong>web designer profesional</strong> yang diakui.</p>
+            </div>
+            <div class="about-block half">
+              <div class="about-block-head">
+                <i class="fa-solid fa-bolt"></i>
+                <h3>Kelebihan</h3>
+              </div>
+              <div class="skill-badges">
+                <span class="sbadge soft">Adaptif</span>
+                <span class="sbadge hard">Desain Canva</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="skills" id="skills">
+    <div class="section-royal-border"></div>
+    <div class="section-wrap">
+      <div class="section-head" data-aos="fade-up">
+        <div class="royal-divider"><span>✦ ── ✦ ── ✦</span></div>
+        <span class="sec-label">Keahlian</span>
+        <h2 class="sec-title">My <em>Skills</em></h2>
+        <p class="sec-sub">Kemampuan teknis yang terus saya kembangkan</p>
+        <div class="gold-line"></div>
+      </div>
+      <div class="skills-layout">
+        <div class="skills-bars" data-aos="fade-up">
+          <div class="skill-item">
+            <div class="skill-top">
+              <div class="skill-label"><i class="fa-brands fa-html5"></i> HTML</div>
+              <span class="skill-percent" data-target="45">0%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill" data-width="45"></div></div>
+            <p class="skill-desc">Mampu membuat struktur halaman web dasar — heading, paragraf, form, tabel, dan elemen semantik.</p>
+          </div>
+          <div class="skill-item">
+            <div class="skill-top">
+              <div class="skill-label"><i class="fa-brands fa-css3-alt"></i> CSS</div>
+              <span class="skill-percent" data-target="30">0%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill" data-width="30"></div></div>
+            <p class="skill-desc">Bisa menerapkan styling dasar seperti warna, font, layout sederhana, dan sedikit animasi.</p>
+          </div>
+          <div class="skill-item">
+            <div class="skill-top">
+              <div class="skill-label"><i class="fa-brands fa-js"></i> JavaScript</div>
+              <span class="skill-percent" data-target="20">0%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill" data-width="20"></div></div>
+            <p class="skill-desc">Masih tahap belajar — memahami variabel, fungsi dasar, dan manipulasi DOM sederhana.</p>
+          </div>
+          <div class="skill-item">
+            <div class="skill-top">
+              <div class="skill-label"><i class="fa-solid fa-network-wired"></i> Cisco Packet Tracer</div>
+              <span class="skill-percent" data-target="50">0%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill" data-width="50"></div></div>
+            <p class="skill-desc">Cukup mahir membuat simulasi jaringan — konfigurasi router, switch, VLAN, dan topologi dasar.</p>
+          </div>
+          <div class="skill-item">
+            <div class="skill-top">
+              <div class="skill-label"><i class="fa-solid fa-palette"></i> Editing (Canva, dll)</div>
+              <span class="skill-percent" data-target="80">0%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
+            <p class="skill-desc">Sangat terampil membuat desain poster, infografis, dan konten visual yang estetik menggunakan Canva.</p>
+          </div>
+        </div>
+        <div class="skills-chart-wrap" data-aos="fade-left">
+          <div class="chart-card">
+            <div class="chart-card-head"><i class="fa-solid fa-chart-bar"></i> Skill Overview</div>
+            <canvas id="skillsChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section class="portfolio" id="portfolio">
+    <div class="section-royal-border"></div>
+    <div class="section-wrap">
+      <div class="section-head" data-aos="fade-up">
+        <div class="royal-divider"><span>✦ ── ✦ ── ✦</span></div>
+        <span class="sec-label">Portfolio</span>
+        <h2 class="sec-title">My <em>Projects</em></h2>
+        <p class="sec-sub">Karya dan proyek yang pernah saya kerjakan</p>
+        <div class="gold-line"></div>
+      </div>
+      <div class="portfolio-grid">
+
+        <!-- Drawing -->
+        <div class="pcard" data-aos="fade-up" data-aos-delay="100">
+          <div class="pcard-img">
+            <img src="screenshots/drawing.jpeg" alt="Drawing"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="pcard-placeholder drawing" style="display:none;"><i class="fa-solid fa-pencil"></i></div>
+            <div class="pcard-overlay"><a href="https://drive.google.com/drive/folders/1NjBjQnjBgWBPVBFEgZlTMMxxxqlG3ePv" target="_blank" rel="noopener" class="btn-see"><i class="fa-solid fa-eye"></i> Lihat</a></div>
+          </div>
+          <div class="pcard-body">
+            <span class="ptag">Design</span>
+            <h3>Drawing</h3>
+            <p>Kegiatan menggambar menggunakan pensil, pena, atau alat gambar lainnya untuk mengekspresikan kreativitas visual.</p>
+            <a href="https://drive.google.com/drive/folders/1NjBjQnjBgWBPVBFEgZlTMMxxxqlG3ePv" target="_blank" rel="noopener" class="plink"><i class="fa-solid fa-arrow-up-right-from-square"></i> Lihat Karya</a>
+          </div>
+        </div>
+
+        <!-- Website Kelompok -->
+        <div class="pcard" data-aos="fade-up" data-aos-delay="200">
+          <div class="pcard-img">
+            <img src="screenshots/website-kelompok.png" alt="Website Kelompok"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="pcard-placeholder web" style="display:none;"><i class="fa-solid fa-globe"></i></div>
+            <div class="pcard-overlay"><a href="https://automotivetechnew.page.gd" target="_blank" rel="noopener" class="btn-see"><i class="fa-solid fa-eye"></i> Lihat</a></div>
+          </div>
+          <div class="pcard-body">
+            <span class="ptag">Web Developing</span>
+            <h3>Website Kelompok</h3>
+            <p>Proses membuat dan mengembangkan website kelompok agar bisa digunakan di internet, mulai dari tampilan hingga sistem di dalamnya.</p>
+            <a href="https://automotivetechnew.page.gd" target="_blank" rel="noopener" class="plink"><i class="fa-solid fa-arrow-up-right-from-square"></i> Kunjungi Website</a>
+          </div>
+        </div>
+
+        <!-- Taekwondo Championship -->
+        <div class="pcard" data-aos="fade-up" data-aos-delay="300">
+          <div class="pcard-img">
+            <img src="screenshots/taekwondo.jpeg" alt="Taekwondo Championship"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="pcard-placeholder taekwondo" style="display:none;"><i class="fa-solid fa-person-running"></i></div>
+            <div class="pcard-overlay"><a href="https://drive.google.com/drive/folders/1yLUJoZS6gLUiNuq7FzytjvPEeACnT8On" target="_blank" rel="noopener" class="btn-see"><i class="fa-solid fa-eye"></i> Lihat</a></div>
+          </div>
+          <div class="pcard-body">
+            <span class="ptag">Non Academic</span>
+            <h3>Taekwondo Championship</h3>
+            <p>Seni bela diri asal Korea Selatan yang menggunakan teknik tendangan dan pukulan — pengalaman bertanding di kejuaraan.</p>
+            <a href="https://drive.google.com/drive/folders/1yLUJoZS6gLUiNuq7FzytjvPEeACnT8On" target="_blank" rel="noopener" class="plink"><i class="fa-solid fa-arrow-up-right-from-square"></i> Lihat Dokumentasi</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CV -->
+  <section class="cv-section" id="testimonial">
+    <div class="section-royal-border"></div>
+    <div class="section-wrap">
+      <div class="section-head" data-aos="fade-up">
+        <div class="royal-divider"><span>✦ ── ✦ ── ✦</span></div>
+        <span class="sec-label">Curriculum Vitae</span>
+        <h2 class="sec-title">My <em>CV</em></h2>
+        <p class="sec-sub">Profil lengkap dan perjalanan akademik saya</p>
+        <div class="gold-line"></div>
+      </div>
+
+      <div class="cv-wrap" data-aos="fade-up">
+        <!-- CV LEFT -->
+        <div class="cv-left">
+          <div class="cv-profile">
+            <div class="cv-photo-wrap">
+              <img src="foto/foto-profil.jpeg" alt="Foto Profil"
+                   class="cv-photo"
+                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+              <div class="cv-photo-ph" style="display:none;"><i class="fa-solid fa-user"></i></div>
+              <div class="cv-photo-ring"></div>
+            </div>
+            <h2 class="cv-name">Nauval Daffa Raditya</h2>
+            <p class="cv-role">Web Designer &amp; Creative</p>
+            <div class="cv-contacts">
+              <div class="cv-crow"><i class="fa-solid fa-location-dot"></i><span>Semarang, Indonesia</span></div>
+              <div class="cv-crow">
+                <i class="fa-brands fa-instagram"></i>
+                <a href="https://www.instagram.com/nopal.rdty?igsh=MTFwMnU3eDk0bXhldw%3D%3D&utm_source=qr" target="_blank" rel="noopener" class="cv-link">@nopal.rdty</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="cv-block">
+            <div class="cv-block-head"><i class="fa-solid fa-bolt"></i><h3>Skills</h3></div>
+            <div class="cv-skills">
+              <div class="cv-skill-row">
+                <span>HTML</span>
+                <div class="cv-bar"><div class="cv-fill" style="width:45%"></div></div>
+                <span class="cv-pct">45%</span>
+              </div>
+              <p class="cv-skill-desc">Mampu membuat struktur halaman web dasar — heading, form, tabel, dan elemen semantik.</p>
+              <div class="cv-skill-row">
+                <span>CSS</span>
+                <div class="cv-bar"><div class="cv-fill" style="width:30%"></div></div>
+                <span class="cv-pct">30%</span>
+              </div>
+              <p class="cv-skill-desc">Bisa menerapkan styling dasar: warna, font, layout sederhana, dan animasi ringan.</p>
+              <div class="cv-skill-row">
+                <span>JavaScript</span>
+                <div class="cv-bar"><div class="cv-fill" style="width:20%"></div></div>
+                <span class="cv-pct">20%</span>
+              </div>
+              <p class="cv-skill-desc">Masih tahap belajar — memahami variabel, fungsi dasar, dan manipulasi DOM.</p>
+              <div class="cv-skill-row">
+                <span>Cisco PKT</span>
+                <div class="cv-bar"><div class="cv-fill" style="width:50%"></div></div>
+                <span class="cv-pct">50%</span>
+              </div>
+              <p class="cv-skill-desc">Cukup mahir simulasi jaringan — konfigurasi router, switch, VLAN, dan topologi dasar.</p>
+              <div class="cv-skill-row">
+                <span>Canva</span>
+                <div class="cv-bar"><div class="cv-fill" style="width:80%"></div></div>
+                <span class="cv-pct">80%</span>
+              </div>
+              <p class="cv-skill-desc">Sangat terampil membuat poster, infografis, dan konten visual yang estetik.</p>
+            </div>
+            <div class="cv-tags">
+              <span><i class="fa-solid fa-arrows-rotate"></i> Adaptif</span>
+              <span><i class="fa-solid fa-lightbulb"></i> Kreatif</span>
+              <span><i class="fa-solid fa-users"></i> Komunikatif</span>
+              <span><i class="fa-solid fa-clock"></i> Tepat Waktu</span>
+            </div>
+          </div>
+
+          <div class="cv-block">
+            <div class="cv-block-head"><i class="fa-solid fa-heart"></i><h3>Hobi &amp; Minat</h3></div>
+            <div class="cv-hobbies">
+              <div class="cv-hobby"><i class="fa-solid fa-gamepad"></i><span>Bermain Game</span></div>
+              <div class="cv-hobby"><i class="fa-solid fa-pencil"></i><span>Menggambar</span></div>
+              <div class="cv-hobby"><i class="fa-solid fa-globe"></i><span>Web Design</span></div>
+              <div class="cv-hobby"><i class="fa-solid fa-palette"></i><span>Desain Grafis</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CV RIGHT -->
+        <div class="cv-right">
+          <div class="cv-block">
+            <div class="cv-block-head"><i class="fa-solid fa-id-card"></i><h3>Data Pribadi</h3></div>
+            <div class="cv-data">
+              <div class="cv-data-row"><span>Nama Lengkap</span><strong>Nauval Daffa Raditya</strong></div>
+              <div class="cv-data-row"><span>Jenis Kelamin</span><strong>Laki-laki</strong></div>
+              <div class="cv-data-row"><span>Kewarganegaraan</span><strong>Indonesia</strong></div>
+              <div class="cv-data-row"><span>Status</span><strong>Pelajar</strong></div>
+              <div class="cv-data-row"><span>Anak ke-</span><strong>1 dari 1 (Anak Tunggal)</strong></div>
+              <div class="cv-data-row"><span>Pekerjaan Orang Tua</span><strong>Karyawan</strong></div>
+              <div class="cv-data-row"><span>Cita-Cita</span><strong>Web Designer Profesional</strong></div>
+            </div>
+          </div>
+
+          <div class="cv-block">
+            <div class="cv-block-head"><i class="fa-solid fa-graduation-cap"></i><h3>Riwayat Pendidikan</h3></div>
+            <div class="cv-timeline">
+              <div class="cv-tl-item">
+                <div class="cv-tl-dot"></div>
+                <div class="cv-tl-body">
+                  <h4>TK Siwipeni 2</h4>
+                  <span class="cv-tl-tag">Taman Kanak-Kanak</span>
+                  <p>Pendidikan awal, membentuk kemampuan bersosialisasi dan kreativitas dasar.</p>
+                </div>
+              </div>
+              <div class="cv-tl-item">
+                <div class="cv-tl-dot"></div>
+                <div class="cv-tl-body">
+                  <h4>SDN Rejosari 1</h4>
+                  <span class="cv-tl-tag">Sekolah Dasar</span>
+                  <p>Mengenal dunia akademik formal dan mengembangkan kemampuan belajar.</p>
+                </div>
+              </div>
+              <div class="cv-tl-item">
+                <div class="cv-tl-dot"></div>
+                <div class="cv-tl-body">
+                  <h4>SMP Negeri 3 Semarang</h4>
+                  <span class="cv-tl-tag">Sekolah Menengah Pertama</span>
+                  <p>Mulai mengenal dunia teknologi dan mengembangkan minat di bidang desain.</p>
+                </div>
+              </div>
+              <div class="cv-tl-item active">
+                <div class="cv-tl-dot"></div>
+                <div class="cv-tl-body">
+                  <h4>SMKN 7 Semarang <span class="cv-now">Sekarang</span></h4>
+                  <span class="cv-tl-tag">Sekolah Menengah Kejuruan</span>
+                  <p>Aktif belajar di bidang teknologi informasi, desain web, dan jaringan komputer.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cv-block">
+            <div class="cv-block-head"><i class="fa-solid fa-trophy"></i><h3>Pengalaman &amp; Lomba</h3></div>
+            <div class="cv-timeline">
+              <div class="cv-tl-item">
+                <div class="cv-tl-dot gold"></div>
+                <div class="cv-tl-body">
+                  <h4>Juara 3 TNI Cup Taekwondo Championship</h4>
+                  <span class="cv-tl-tag">Tingkat Internasional</span>
+                  <p>Berpartisipasi dalam kejuaraan Taekwondo TNI CUP 2025.</p>
+                </div>
+              </div>
+              <div class="cv-tl-item">
+                <div class="cv-tl-dot gold"></div>
+                <div class="cv-tl-body">
+                  <h4>Simulasi Jaringan Cisco</h4>
+                  <span class="cv-tl-tag">Praktik Mandiri</span>
+                  <p>Menyelesaikan skenario konfigurasi jaringan dengan Cisco Packet Tracer.</p>
+                </div>
+              </div>
+              <div class="cv-tl-item">
+                <div class="cv-tl-dot gold"></div>
+                <div class="cv-tl-body">
+                  <h4>Pembuatan Website Personal</h4>
+                  <span class="cv-tl-tag">Proyek Mandiri &middot; 2026</span>
+                  <p>Membangun website personal branding dari nol dengan HTML, CSS, dan JavaScript.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cv-quote">
+            <i class="fa-solid fa-quote-left"></i>
+            <blockquote>"Desain bukan hanya tentang bagaimana sesuatu terlihat tapi bagaimana sesuatu bekerja dan dirasakan."</blockquote>
+            <p>— Nauval Daffa Raditya</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-royal-top">
+        <span class="footer-ornament">⚜</span>
+        <div class="footer-divider-line"></div>
+        <span class="footer-ornament">⚜</span>
+      </div>
+      <span class="footer-logo">NDR<span class="logo-dot">.</span></span>
+      <p>&copy; 2026 Nauval Daffa Raditya. Dibuat dengan <i class="fa-solid fa-heart" style="color:#c9a84c"></i></p>
+      <div class="footer-nav">
+        <a href="#hero">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#testimonial">CV</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
